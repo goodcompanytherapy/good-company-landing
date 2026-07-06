@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Good Company Speech & Language</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- DESIGN SYSTEM & VARIABLES --- */
+        :root {
+            --primary: #010d79;       /* Deep elegant blue */
+            --btn-deep: #001072;      /* Rich navy core button */
+            --bg-light: #f0f6ff;      /* Soft blue tint */
+            --bg-warm-1: #f6f6f1;     /* Calming cream */
+            --bg-warm-2: #f9f5f2;     /* Soothing linen tint */
+            --text-dark: #222222;     /* Soft dark charcoal */
+            --text-muted: #555555;   /* Secondary text */
+            --white: #ffffff;
+            --font-serif: 'Playfair Display', Georgia, serif;
+            --font-sans: 'Plus Jakarta Sans', sans-serif;
+            --transition: all 0.25s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--text-dark);
+            background-color: var(--bg-warm-2);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-serif);
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        p {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        /* --- STYLISH BUTTONS --- */
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 0.9rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            transition: var(--transition);
+            border: 1px solid var(--primary);
+            cursor: pointer;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--primary);
+        }
+
+        /* Pristine pill shape layout setup for header scheduling link asset */
+        .btn-nav {
+            background-color: var(--btn-deep) !important;
+            border-color: var(--btn-deep) !important;
+            padding: 0.7rem 2.2rem !important;
+            font-size: 0.85rem !important;
+            letter-spacing: 1px;
+            color: #ffffff !important; 
+            font-weight: 500 !important;
+            border-radius: 50px !important;
+        }
+        
+        .btn-nav:hover {
+            background-color: transparent !important;
+            color: var(--btn-deep) !important;
+        }
+
+        /* --- STICKY NAVIGATION --- */
+        header {
+            background-color: var(--bg-warm-2);
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.02);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100px;
+        }
+
+        .nav-logo img {
+            height: 70px;
+            display: block;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links > li > a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 500;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            display: inline-block;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links > li > a:not(.btn):hover {
+            font-weight: 700;
+        }
+
+        /* Dropdown Architecture Matrix */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--white);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border-radius: 8px;
+            padding: 0.5rem 0;
+            list-style: none;
+            display: none;
+            min-width: 180px;
+            margin-top: 0px; 
+            border-top: 12px solid transparent; 
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-menu a {
+            padding: 0.7rem 1.2rem;
+            display: block;
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            transition: var(--transition);
+        }
+
+        .dropdown-menu a:hover {
+            background-color: var(--bg-light);
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* --- HERO BANNER FRAME MODULE --- */
+        .hero-banner-frame {
+            width: 100%;
+            position: relative;
+            padding-top: 26.31%; /* Accurate 19W x 5H Layout calculations */
+            overflow: hidden;
+            background-color: var(--bg-warm-1);
+        }
+
+        .hero-banner-frame img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .hero-banner-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.25); 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-overlay-logo {
+            max-width: 25%;
+            height: auto;
+            max-height: 80%;
+            object-fit: contain !important;
+            position: relative !important;
+            filter: brightness(0) invert(1); 
+        }
+
+        /* --- MODULE ROUTE VIEWS CONTROL CONTEXTS --- */
+        .page-view {
+            display: none;
+            padding: 80px 0;
+            flex: 1;
+        }
+
+        .page-view.active-view {
+            display: block;
+        }
+
+        /* --- HOME PAGE MODULE VIEW --- */
+        #home-view {
+            text-align: center;
+            background: linear-gradient(180deg, var(--bg-warm-2) 0%, var(--bg-warm-1) 100%);
+            padding-top: 60px;
+        }
+
+        .hero-title {
+            font-size: 2.4rem;
+            line-height: 1.3;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-bio-container {
+            max-width: 760px;
+            margin: 0 auto 3.5rem;
+            text-align: center;
+        }
+        
+        .hero-bio-container p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-bio-container p.bio-lead {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--primary);
+            font-family: var(--font-serif);
+        }
+
+        .bottom-signature-tagline {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: 1.6rem;
+            color: var(--primary);
+            margin: 6rem auto 2rem;
+            letter-spacing: 0.5px;
+            text-align: center;
+            max-width: 600px;
+            position: relative;
+        }
+        
+        .bottom-signature-tagline::before {
+            content: "";
+            display: block;
+            width: 40px;
+            height: 1px;
+            background-color: rgba(1, 13, 121, 0.2);
+            margin: 0 auto 2rem;
+        }
+
+        /* Delivery Models updated into a sleek two-column layout */
+        .delivery-models {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2.5rem;
+            margin-top: 5rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .model-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.01);
+            border: 1px solid rgba(1, 13, 121, 0.03);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .model-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(1, 13, 121, 0.04);
+        }
+
+        .model-img-placeholder {
+            width: 100%;
+            height: 180px;
+            background-color: var(--bg-warm-1);
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border: 1px dashed rgba(1, 13, 121, 0.1);
+        }
+
+        .model-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        /* --- ACCORDIONS SYSTEMS --- */
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .accordion-wrapper {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .accordion-item {
+            background: var(--white);
+            margin-bottom: 1rem;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.02);
+        }
+
+        .accordion-header {
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            color: var(--primary);
+            user-select: none;
+            transition: var(--transition);
+        }
+
+        .accordion-header:hover {
+            background-color: var(--bg-light);
+        }
+
+        .accordion-icon {
+            font-size: 1.4rem;
+            font-weight: 300;
+            transition: var(--transition);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            padding: 0 2rem;
+            background-color: var(--white);
+        }
+
+        .accordion-content .content-inner {
+            padding-bottom: 1.5rem;
+            padding-top: 0.5rem;
+            font-size: 1.05rem;
+            color: var(--text-muted);
+        }
+
+        .accordion-content .content-inner ul {
+            list-style-type: none;
+            margin-left: 0;
+        }
+
+        .accordion-content .content-inner li,
+        .accordion-content .content-inner p {
+            margin-bottom: 1rem;
+        }
+        
+        .accordion-content .content-inner p:last-child,
+        .accordion-content .content-inner li:last-child {
+            margin-bottom: 0;
+        }
+
+        .accordion-item.active .accordion-icon {
+            transform: rotate(45deg);
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 1000px; 
+        }
+
+        /* --- TEAM STRUCTURAL CONFIGURATIONS --- */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 3rem;
+            margin-top: 2rem;
+            justify-content: center;
+        }
+
+        .team-card {
+            background: var(--white);
+            border-radius: 16px;
+            text-align: center;
+            padding: 3.5rem 2.5rem;
+            border: 1px solid rgba(0,0,0,0.02);
+            box-shadow: 0 4px 25px rgba(0,0,0,0.01);
+        }
+
+        .team-profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1.5rem;
+            display: block;
+            border: 2px solid var(--bg-warm-1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .team-role {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .team-bio {
+            text-align: left;
+            font-size: 1rem;
+            margin-bottom: 0;
+            line-height: 1.6;
+        }
+
+        /* --- RESTORED DESIGN SIGHT UNIFIED CONTACT FRAME --- */
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-form {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.01);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--primary);
+        }
+
+        .form-group input, 
+        .form-group textarea {
+            width: 100%;
+            padding: 0.9rem 1.2rem;
+            border-radius: 8px;
+            border: 1px solid rgba(1, 13, 121, 0.1);
+            background-color: var(--bg-warm-2);
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            color: var(--text-dark);
+        }
+
+        .contact-info-panel h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+            margin-top: 2rem;
+        }
+        
+        .contact-info-panel h3:first-child { margin-top: 0; }
+
+        .contact-welcoming-frame {
+            width: 100%;
+            height: 200px;
+            background-color: var(--bg-warm-1);
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            border: 1px dashed rgba(1, 13, 121, 0.1);
+        }
+
+        /* --- LIST-STYLE SLP PRICING SHEETS --- */
+        .pricing-list-wrapper {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .pricing-list-section {
+            margin-bottom: 4rem;
+        }
+
+        .pricing-list-section h2 {
+            font-family: var(--font-serif);
+            font-size: 1.75rem;
+            color: var(--primary);
+            border-bottom: 1px solid rgba(1, 13, 121, 0.1);
+            padding-bottom: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-list-item {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(1, 13, 121, 0.02);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.01);
+        }
+
+        .pricing-list-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.75rem;
+            gap: 1.5rem;
+        }
+
+        .pricing-list-header h3 {
+            font-family: var(--font-sans);
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .pricing-list-price {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--primary);
+            white-space: nowrap;
+        }
+
+        .pricing-list-item p {
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin-bottom: 0;
+            line-height: 1.6;
+        }
+
+        .pricing-footer-disclaimer {
+            margin-top: 4rem;
+            padding: 2.5rem;
+            background-color: var(--white);
+            border-radius: 12px;
+            border-left: 3px solid var(--primary);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.01);
+        }
+
+        .pricing-footer-disclaimer p {
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .pricing-footer-disclaimer p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* --- STANDALONE TEXT COPIES LAYOUT WRAPPER --- */
+        .policy-document-layout {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--white);
+            padding: 4rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.01);
+            border: 1px solid rgba(1, 13, 121, 0.02);
+        }
+        
+        .policy-document-layout h2 {
+            font-size: 1.5rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid rgba(1, 13, 121, 0.05);
+            padding-bottom: 0.25rem;
+        }
+        
+        .policy-document-layout h2:first-of-type {
+            margin-top: 0;
+        }
+        
+        .policy-document-layout p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        /* --- GLOBAL FOOTER DESIGNS --- */
+        footer {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 5rem 0 3rem;
+            margin-top: auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 3rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            align-items: start;
+        }
+
+        .footer-logo img {
+            height: 75px;
+            margin-bottom: 1.25rem;
+            background: transparent;
+        }
+
+        .footer-address p {
+            color: rgba(255,255,255,0.75);
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-nav-block h4,
+        .footer-socials h4 {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            margin-bottom: 1.25rem;
+            color: var(--white);
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-nav-block ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .footer-nav-block a,
+        .social-links a {
+            color: rgba(255,255,255,0.75);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .footer-nav-block a:hover,
+        .social-links a:hover { 
+            color: var(--white); 
+        }
+
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            list-style: none;
+        }
+
+        .footer-copyright {
+            text-align: center; 
+            padding-top: 2rem;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.4);
+            width: 100%;
+        }
+
+        /* --- RESPONSIVE MEDIA BREAKPOINTS --- */
+        @media (max-width: 968px) {
+            .contact-layout { grid-template-columns: 1fr; gap: 3rem; }
+            .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 2.5rem; }
+            .nav-links { gap: 1rem; }
+            .nav-container { height: auto; padding: 1.5rem 2rem; flex-direction: column; gap: 1.2rem; }
+            .hero-banner-frame { padding-top: 40%; } 
+            .hero-overlay-logo { max-width: 50%; }
+            .pricing-list-header { flex-direction: column; gap: 0.25rem; }
+            .policy-document-layout { padding: 2rem; }
+            .delivery-models { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="nav-logo" onclick="switchView('home-view', true)">
+                <img src="Untitled design (1).png" alt="Good Company Speech & Language Logo">
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#" onclick="switchView('home-view', true)">HOME</a></li>
+                    <li class="dropdown">
+                        <a href="#" onclick="switchView('process-view', false)">PROCESS ▾</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" onclick="switchView('process-view', false)">HOW IT WORKS</a></li>
+                            <li><a href="#" onclick="switchView('pricing-view', false)">PRICING</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" onclick="switchView('services-view', false)">SERVICES</a></li>
+                    <li><a href="#" onclick="switchView('about-view', false)">OUR TEAM</a></li>
+                    <li><a href="https://goodcompanytherapy.janeapp.com" target="_blank" class="btn btn-nav">BOOK</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div id="global-hero-banner" class="hero-banner-frame">
+        <img src="background header.jpg" alt="Children painting and exploring communication elements">
+        <div class="hero-banner-overlay">
+            <img class="hero-overlay-logo" src="Untitled design (1).png" alt="Good Company Identity Mask Area">
+        </div>
+    </div>
+
+    <main id="home-view" class="page-view active-view">
+        <div class="container">
+            <h1 class="hero-title">Speech-Language Pathology Services</h1>
+            
+            <div class="hero-bio-container">
+                <p class="bio-lead">Nurturing connection through dedicated, professional speech & language care.</p>
+                <p>In Good Company, we are devoted to collaborating with families and supporting diverse learning styles. We believe in fostering authentic connection through meaningful interactions, combining a fun and motivating environment with evidence-based practices to drive success.</p>
+                <p>Our passionate team provides the comprehensive assessments and tailored treatment plans your child needs to thrive.</p>
+            </div>
+            
+            <a href="https://goodcompanytherapy.janeapp.com" target="_blank" class="btn">Book With Us</a>
+
+            <div class="delivery-models">
+                <div class="model-card">
+                    <div class="model-img-placeholder">[ In Clinic Image Space ]</div>
+                    <h3>In Clinic</h3>
+                    <p>In-person therapy services at our cozy Thornhill clinic. Come see our home base. By appointment only.</p>
+                </div>
+                <div class="model-card">
+                    <div class="model-img-placeholder">[ Virtual Therapy Image Space ]</div>
+                    <h3>Virtual Therapy</h3>
+                    <p>Secure virtual therapy sessions are available, offering flexible and effective support from the comfort of your home.</p>
+                </div>
+            </div>
+
+            <div class="bottom-signature-tagline">You’re in Good Company</div>
+        </div>
+    </main>
+
+    <div id="process-view" class="page-view">
+        <div class="container">
+            <div class="section-header">
+                <h2>How It Works</h2>
+                <p>We partner with you at every step of your child’s development journey. Click on each step below to learn more about our process.</p>
+            </div>
+
+            <div class="accordion-wrapper">
+                <div class="accordion-item">
+                    <div class="accordion-header">Free Screening <span class="accordion-icon">+</span></div>
+                    <div class="accordion-content">
+                        <div class="content-inner">
+                            A virtual, 15-minute no-cost screening with a Speech-Language Pathologist to help you determine whether our collective is right for you and your family.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">Assessment <span class="accordion-icon">+</span></div>
+                    <div class="accordion-content">
+                        <div class="content-inner">
+                            <p><strong>Virtual Consultation:</strong> Caregiver-only virtual meeting to discuss your child’s needs and goals and give families a clear understanding of our services.</p>
+                            <p><strong>Initial Assessment:</strong> 1-3 sessions to assess your child’s strengths and areas of need. Guided by information provided by caregiver in initial consultation.</p>
+                            <p><strong>Assessment Results:</strong> Your clinician will share the assessment results and provide recommendations for next steps.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">Collaborative Goal Setting <span class="accordion-icon">+</span></div>
+                    <div class="accordion-content">
+                        <div class="content-inner">
+                            Your clinician will provide recommendations and create an individualized treatment plan based on the assessment. Goals are developed collaboratively with families, focusing on meaningful, functional communication outcomes.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">Treatment <span class="accordion-icon">+</span></div>
+                    <div class="accordion-content">
+                        <div class="content-inner">
+                            <p><strong>One-on-one treatment sessions:</strong> Individualized therapy sessions, designed to support progress through evidence-based and engaging approaches.</p>
+                            <p><strong>Communication partner training:</strong> We coach parents, caregivers, and educators to support communication growth during everyday interactions.</p>
+                            <p><strong>Interdisciplinary meetings:</strong> We collaborate with educators and other professionals to ensure coordinated and consistent support.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">Reports <span class="accordion-icon">+</span></div>
+                    <div class="accordion-content">
+                        <div class="content-inner">
+                            <p><strong>Summary reports:</strong> Clear, concise summary reports provide an overview of assessment findings and recommendations.</p>
+                            <p><strong>Progress reports:</strong> Track development, celebrate gains, and guide ongoing therapy decisions.</p>
+                            <p><strong>Academic reports:</strong> Support academic planning by outlining communication needs, strengths, and recommendations.</p>
+                            <p style="margin-top:1.5rem; font-style:italic; font-size:0.95rem;">Reports are available upon request.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">OAP Service Provision <span class="accordion-icon">+</span></div>
+                    <div class="accordion-content">
+                        <div class="content-inner">
+                            We provide speech-language pathology services eligible under the Ontario Autism Program.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="pricing-view" class="page-view">
+        <div class="container">
+            <div class="section-header">
+                <h2>Pricing</h2>
+                <p>Transparent rates engineered clearly around professional care segments.</p>
+            </div>
+            
+            <div class="pricing-list-wrapper">
+                <div class="pricing-list-section">
+                    <h2>Assessment Services</h2>
+                    
+                    <div class="pricing-list-item">
+                        <div class="pricing-list-header">
+                            <h3>Initial Consultation</h3>
+                            <div class="pricing-list-price">$180</div>
+                        </div>
+                        <p>Virtual initial meeting with an SLP to review our process, consent and your child’s language needs.</p>
+                    </div>
+
+                    <div class="pricing-list-item">
+                        <div class="pricing-list-header">
+                            <h3>Comprehensive Assessment</h3>
+                            <div class="pricing-list-price">$270</div>
+                        </div>
+                        <p>45 minutes of direct assessment with an SLP, followed by clinical analysis, a parent debrief, and a customized goal report.</p>
+                    </div>
+                </div>
+
+                <div class="pricing-list-section" style="margin-bottom: 0;">
+                    <h2>Treatment Services</h2>
+                    
+                    <div class="pricing-list-item">
+                        <div class="pricing-list-header">
+                            <h3>SLP Treatment 60</h3>
+                            <div class="pricing-list-price">$180</div>
+                        </div>
+                    </div>
+
+                    <div class="pricing-list-item">
+                        <div class="pricing-list-header">
+                            <h3>SLP Treatment 45</h3>
+                            <div class="pricing-list-price">$145</div>
+                        </div>
+                    </div>
+
+                    <div class="pricing-list-item">
+                        <div class="pricing-list-header">
+                            <h3>CDA or SLP-A Treatment 60</h3>
+                            <div class="pricing-list-price">$130</div>
+                        </div>
+                    </div>
+
+                    <div class="pricing-list-item">
+                        <div class="pricing-list-header">
+                            <h3>CDA or SLP-A Treatment 45</h3>
+                            <div class="pricing-list-price">$100</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pricing-footer-disclaimer">
+                    <p>SLP services are covered by most insurance plans. Please check with your insurance provider to determine your coverage. We do not provide direct billing.</p>
+                    <p>SLP and CDA services are covered through the Ontario Autism Program.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="services-view" class="page-view">
+        <div class="container">
+            <div class="section-header">
+                <h2>Speech-Language Pathology</h2>
+                <p>Speech Language Pathologists are registered with the College of Audiologists and Speech-Language Pathologist of Ontario (CASLPO). We provide evidenced-based treatment to support speech, language, social communication, literacy and AAC needs across development. We offer a full range of speech and language services tailored to each child’s unique communication strengths and needs.</p>
+            </div>
+
+            <div class="accordion-wrapper">
+                <div class="accordion-item">
+                    <div class="accordion-header">Early Intervention <span class="accordion-icon">+</span></div>
+                    <div class="accordion-content">
+                        <div class="content-inner">
+                            Early intervention supports communication development during the critical early years (birth to preschool). Therapy focuses on building foundational skills through play-based, family-centered strategies that promote long-term success.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">Gestalt Language Processing <span class="accordion-icon">+</span></div>
+                    <div class="accordion-content">
+                        <div class="content-inner">
+                            Gestalt language processors learn language in chunks or scripts rather than single words. We use evidence-based, respectful approaches to support the development of flexible, self-generated language while honouring each child’s natural communication style.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">Language Delay & Disorder <span class="accordion-icon">+</span></div>
+                    <div class="accordion-content">
+                        <div class="content-inner">
+                            Language difficulties affect how a child understands and/or uses language. Services target vocabulary, sentence structure, comprehension, and social language to support functional communication across environments.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">Literacy <span class="accordion-icon">+</span></div>
+                    <div class="accordion-content">
+                        <div class="content-inner">
+                            Literacy services support the development of early reading and writing skills, including phonological awareness, decoding, comprehension, and written expression, using language-based and evidence-informed approaches.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">Speech Sound Production <span class="accordion-icon">+</span></div>
+                    <div class="accordion-content">
+                        <div class="content-inner">
+                            <p>Motor speech disorders affect the planning, coordination, or execution of speech movements. Therapy focuses on improving speech clarity through structured, supportive, and individualized intervention.</p>
+                            <p>Articulation disorders occur when a child has difficulty producing speech sounds clearly. Therapy focuses on improving sound accuracy and intelligibility so children can be better understood by others.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">Augmentative and Alternative Communication (AAC) <span class="accordion-icon">+</span></div>
+                    <div class="accordion-content">
+                        <div class="content-inner">
+                            AAC includes any tools and strategies that support communication, such as gestures, body language, picture systems, AAC devices, and sign. AAC supports language development and does not prevent spoken language. We honour all forms of communication and set AAC goals to encourage our clients express themselves authentically.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">Neurodiversity-Affirming Communication <span class="accordion-icon">+</span></div>
+                    <div class="accordion-content">
+                        <div class="content-inner">
+                            Neurodiversity-affirming practice recognizes and respects differences in communication, learning, and interaction. Therapy prioritizes autonomy, authenticity, strengths, and meaningful participation over “normalizing” behaviours.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">Autism Spectrum Disorder <span class="accordion-icon">+</span></div>
+                    <div class="accordion-content">
+                        <div class="content-inner">
+                            We provide individualized, neurodiversity affirming speech-language services for autistic individuals. Support may include language development, social communication, AAC, and communication partner education, always centered on the individual’s needs and identity.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="about-view" class="page-view">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Team</h2>
+                <p>Meet the passionate, experienced professionals behind Good Company who are dedicated to helping your family thrive.</p>
+            </div>
+
+            <div class="team-grid">
+                <div class="team-card">
+                    <img class="team-profile-img" src="Julia pic.jpg" alt="Julia Buchignani">
+                    <h3>Julia Buchignani</h3>
+                    <p class="team-role">Speech-Language Pathologist, Reg. CASLPO</p>
+                    <p class="team-bio">Julia is a dedicated SLP at Good Company. Julia graduated from the University of Toronto with a Master's of Health Science in Speech-Language Pathology in 2023. She has experience working in private practice and school-based settings. Julia values collaborating with clients and their families to develop client-centred treatment plans. She is PROMPT-trained for motor speech therapy. With many years of experience working with autistic children, Julia is a passionate advocate for neurodiversity affirming approaches in therapy.</p>
+                </div>
+                
+                <div class="team-card" style="border: 1px dashed rgba(1, 13, 121, 0.15); background: transparent; box-shadow: none; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                    <div class="team-profile-img" style="background-color: rgba(1, 13, 121, 0.02); border: 1px dashed rgba(1, 13, 121, 0.2); display: flex; align-items: center; justify-content: center; color: var(--text-muted);">
+                        <span>Photo</span>
+                    </div>
+                    <h3 style="color: var(--text-muted); opacity: 0.7;">Team Member Coming Soon</h3>
+                    <p class="team-role" style="margin-bottom: 0;">Speech-Language Pathology Collective</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="contact-view" class="page-view">
+        <div class="container">
+            <div class="section-header" style="text-align: left; margin-left: 0;">
+                <h2>Get In Touch</h2>
+                <p style="font-size: 1.2rem;">We're excited to hear from you.</p>
+            </div>
+
+            <div class="contact-layout">
+                <form class="contact-form" onsubmit="event.preventDefault(); alert('Clinical intake form submitted securely.');">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" required placeholder="Your full name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required placeholder="name@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" required placeholder="(123) 456-7890">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" rows="5" required placeholder="How can our clinical team help support your family's needs?"></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+
+                <div class="contact-info-panel">
+                    <div class="contact-welcoming-frame">[ Clinic Environment Photo Space ]</div>
+
+                    <h3>Our Address</h3>
+                    <p>Unit 25a - 9200 Bathurst Street, Thornhill, ON.</p>
+                    <p style="font-size: 0.95rem; margin-top: -1rem; font-style: italic;">We are located at 9200 Bathurst Street, Thornhill. You can find us on the first floor of the medical office.</p>
+
+                    <h3>Contact Details</h3>
+                    <p>Phone: 905.707.0090<br>Email: hello@goodcompanytherapy.ca</p>
+
+                    <h3>Clinic Hours</h3>
+                    <p>By Appointment Only<br>Monday – Friday: 9:00 AM – 7:00 PM<br>Sunday: 10:00 AM – 3:00 PM</p>
+
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1438.7231179723276!2d-79.4615363610719!3d43.846578842773404!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b2be54436ee6f%3A0x581db2a0f17fb953!2s9200%20Bathurst%20St%2C%20Thornhill%2C%20ON%20L4J%208W1!5e0!3m2!1sen!2sca!4v1779423239652!5m2!1sen!2sca" width="100%" height="240" style="border:0; border-radius: 12px; margin-top: 1.5rem;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="privacy-policy-view" class="page-view">
+        <div class="container">
+            <div class="policy-document-layout">
+                <h1 style="margin-bottom: 2rem; font-size: 2.2rem; border-bottom: 2px solid var(--primary); padding-bottom: 0.5rem;">Privacy Policy</h1>
+                <p>At Good Company Speech & Language, your trust and privacy are our top priorities. We protect your child’s personal health information in strict accordance with Ontario’s Personal Health Information Protection Act (PHIPA) and the College of Audiologists and Speech-Language Pathologists of Ontario (CASLPO).</p>
+                
+                <h2>Collection of Information</h2>
+                <p>To provide the best possible care, we maintain a secure health record. This file includes contact and demographic details such as names, phone numbers, addresses, and dates of birth. It also contains background history including developmental milestones, medical history, and notes from teachers or doctors. Clinical records like assessments, formal reports, progress notes, and discharge summaries are securely stored alongside administrative data such as signed consents, attendance logs, and billing records.</p>
+                
+                <h2>Sharing of Information</h2>
+                <p>We love collaborating to see your child succeed! With your verbal or written consent, we can share relevant information with professionals you include in your child’s Circle of Care, such as pediatricians, teachers, or occupational therapists. We never share information outside of Good Company Speech & Language without your explicit consent, except when required by law.</p>
+                
+                <h2>Legal Exceptions to Consent</h2>
+                <p>By law, we must share information without your permission in rare circumstances regarding safety concerns, such as suspected child abuse or neglect under the Child, Youth and Family Services Act, or imminent danger to self or others. Information must also be shared to comply with legal mandates like court orders, subpoenas, or warrants. Finally, disclosure is required for regulatory requirements, including mandatory CASLPO peer assessments, or during urgent medical emergencies.</p>
+                
+                <h2>Health Insurance Claims</h2>
+                <p>When you submit a claim to your private insurer, you authorize them to verify the service. By law, insurance companies can request the patient’s name, the date and type of service, the clinician's name, and the invoiced amount without separate consent.</p>
+                
+                <h2>Obtaining Consent</h2>
+                <p>In compliance with CASLPO and PHIPA, our Speech-Language Pathologists must obtain your knowledgeable consent before screening, assessing, or treating your child. Consent can be given verbally or in writing and is immediately documented in your child's file. You can learn more about these guidelines via the official Personal Health Information Protection Act and Health Care Consent Act.</p>
+                
+                <h2>Retention of Records</h2>
+                <p>We store electronic records using secure, compliant systems. Following provincial regulations, files are kept for a minimum of 10 years after the date of the last appointment if the client was 18 or older. If the client was a minor during care, records are kept for 10 years after the date the client turns, or would have turned, 18 years old.</p>
+                
+                <h2>Changing Personal Health Information</h2>
+                <p>You have the right to review your child's records. If you notice an error or inaccuracy, please inform your therapist. We will update the record promptly and provide you with a corrected copy.</p>
+                
+                <h2>Questions or Concerns?</h2>
+                <p>Please reach out to us at hello@goodcompanytherapy.ca or 905.707.0090. We are always here to help!</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="faq-view" class="page-view">
+        <div class="container">
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+                <p>Find quick answers to common questions about coverage, clinical standards, and operational sessions.</p>
+            </div>
+            <div class="accordion-wrapper" style="max-width: 800px;">
+                <div class="accordion-item">
+                    <div class="accordion-header">Are SLP services covered by OHIP? <span class="accordion-icon">+</span></div>
+                    <div class="accordion-content"><div class="content-inner">Private speech-language pathology services are not covered under OHIP. Your clinician can discuss publicly-funded services that may be available to you or your child.</div></div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">Does insurance cover SLP services? <span class="accordion-icon">+</span></div>
+                    <div class="accordion-content"><div class="content-inner">Most extended health insurance plans cover pediatric speech therapy. We recommend contacting your provider to verify your specific benefits. Please note that we do not offer direct billing. You will receive an emailed receipt after each session, which you can submit to your insurance provider for reimbursement.</div></div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">Are SLP services covered by OAP? <span class="accordion-icon">+</span></div>
+                    <div class="accordion-content"><div class="content-inner">Yes, private speech-language pathology services are covered under the Ontario Autism Program (OAP). Speech-language pathology is explicitly approved as one of the program's Core Clinical Services. Families can use their OAP funding allotments to pay for our assessments, direct therapy sessions, and caregiver consultations. To utilize your funding here, your child must be registered with the OAP, and you will need to submit our detailed invoices and receipts to the program for reimbursement.</div></div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">Do I need a doctor's referral? <span class="accordion-icon">+</span></div>
+                    <div class="accordion-content"><div class="content-inner">A referral is not required to access private speech-language pathology services. You are welcome to contact us directly to book a consultation, assessment, or therapy session.</div></div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">What payment methods do you accept? <span class="accordion-icon">+</span></div>
+                    <div class="accordion-content"><div class="content-inner">We accept credit cards (VISA and Mastercard) as well as e-transfers. Payment is required at the time of your scheduled appointment. We require that a credit card be kept on file through our secure payment portal.</div></div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">What are your rates? <span class="accordion-icon">+</span></div>
+                    <div class="accordion-content"><div class="content-inner">Our fee structure aligns with the guidelines recommended by the Ontario Speech and Language Association (OSLA). Please see our pricing page for more information regarding our fees.</div></div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">How many assessment sessions will we need? <span class="accordion-icon">+</span></div>
+                    <div class="accordion-content"><div class="content-inner">Assessments usually require one clinical hour. This session includes a parent report and a variety of play-based activities where the SLP evaluates your child's speech, language, communication, and play skills. Depending on your child's needs, standardized tools may also be used. Your therapist will inform you if your child requires additional assessment sessions. Additional assessment sessions are billed at a lower rate than the first treatment session.</div></div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">What is a “clinical hour”? <span class="accordion-icon">+</span></div>
+                    <div class="accordion-content">
+                        <div class="content-inner">
+                            <p>A clinical hour accounts for all billed time allocated to your assessment or treatment session. Each session is divided into direct time, which is the face-to-face time spent with the therapist, and indirect time, which is dedicated to caregiver debriefing, preparation, documentation and clean-up.</p>
+                            <p><strong>60 minute session:</strong> 45 minutes of direct therapy + 15 minutes of indirect time</p>
+                            <p><strong>45 minute session:</strong> 35 minutes of direct therapy + 10 minutes of indirect time</p>
+                            <p><strong>30 minute session:</strong> 25 minutes of direct therapy + 5 minutes of indirect time</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="cancellation-policy-view" class="page-view">
+        <div class="container">
+            <div class="policy-document-layout">
+                <h1 style="margin-bottom: 2rem; font-size: 2.2rem; border-bottom: 2px solid var(--primary); padding-bottom: 0.5rem;">Cancellation & No-Show Policy</h1>
+                
+                <h2>Notice Requirements and Fees</h2>
+                <p>If you cancel your appointment more than 24 hours in advance, you will not incur any fees.</p>
+                <p>Cancellations made less than 24 hours before your scheduled time are subject to a late cancellation fee of 50% of the session cost.</p>
+                <p>If you miss a scheduled session without any notice, it will be considered a no-show and billed at the full session rate.</p>
+                
+                <h2>Emergencies and Illness</h2>
+                <p>We understand that emergencies and sudden illnesses happen. To accommodate these unexpected events, one late cancellation fee may be waived per calendar year at your clinician’s discretion.</p>
+                
+                <h2>Extended Absences</h2>
+                <p>Please note that we are unable to hold regular therapy spots during extended absences of three weeks or more. In these cases, your spot will be released and you will return to our waitlist. We will do our best to work with you to find a new appointment time when you are ready to return.</p>
+                
+                <h2>How to Cancel</h2>
+                <p>To cancel or reschedule an appointment, please contact your therapist directly or email us at <a href="mailto:hello@goodcompanytherapy.ca" style="color: var(--primary); text-decoration: underline;">hello@goodcompanytherapy.ca</a>.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-identity">
+                <div class="footer-logo">
+                    <img src="Untitled design (1).png" alt="Good Company System Graphic">
+                </div>
+                <div class="footer-address">
+                    <p>Unit 25a - 9200 Bathurst Street, Thornhill, ON</p>
+                    <p style="margin-top: 0.5rem;">Phone: 905.707.0090</p>
+                    <p>Email: <a href="mailto:hello@goodcompanytherapy.ca" style="color: rgba(255,255,255,0.8); text-decoration: none;">hello@goodcompanytherapy.ca</a></p>
+                </div>
+            </div>
+
+            <div class="footer-nav-block">
+                <h4>Explore</h4>
+                <ul>
+                    <li><a href="#" onclick="switchView('home-view', true)">Home</a></li>
+                    <li><a href="#" onclick="switchView('process-view', false)">Our Process</a></li>
+                    <li><a href="#" onclick="switchView('pricing-view', false)">Pricing</a></li>
+                    <li><a href="#" onclick="switchView('services-view', false)">Services</a></li>
+                    <li><a href="#" onclick="switchView('about-view', false)">Our Team</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-nav-block">
+                <h4>About</h4>
+                <ul>
+                    <li><a href="#" onclick="switchView('privacy-policy-view', false)">Privacy Policy</a></li>
+                    <li><a href="#" onclick="switchView('faq-view', false)">FAQ</a></li>
+                    <li><a href="#" onclick="switchView('cancellation-policy-view', false)">Cancellation Policy</a></li>
+                    <li><a href="#" onclick="switchView('contact-view', false)">Contact & Location</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <p>© 2026 Good Company Speech & Language. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Centralized Page Swapping Core Engine
+        function switchView(viewId, showHeaderBanner) {
+            document.querySelectorAll('.page-view').forEach(view => {
+                view.classList.remove('active-view');
+            });
+            
+            const targetView = document.getElementById(viewId);
+            if (targetView) {
+                targetView.classList.add('active-view');
+            }
+            
+            const banner = document.getElementById('global-hero-banner');
+            if (showHeaderBanner) {
+                banner.style.display = 'block';
+            } else {
+                banner.style.display = 'none';
+            }
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Shared Multi-Group Accordion Systems
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                item.classList.toggle('active');
+                
+                const parentZone = item.parentElement;
+                parentZone.querySelectorAll('.accordion-item').forEach(sibling => {
+                    if (sibling !== item) {
+                        sibling.classList.remove('active');
+                    }
+                });
+            });
+        });
+        
+        // Initial setup defaults directly to home screen module views
+        switchView('home-view', true);
+    </script>
+</body>
+</html>
