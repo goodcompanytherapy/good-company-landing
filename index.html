@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
-        /* --- DESIGN SYSTEM & VARIABLES --- */
+        /* --- DESIGN SYSTEM & FLUID VARIABLES --- */
         :root {
             --primary: #010d79;       /* Deep elegant blue */
             --btn-deep: #001072;      /* Rich navy core button */
@@ -22,12 +22,24 @@
             --font-serif: 'Playfair Display', Georgia, serif;
             --font-sans: 'Plus Jakarta Sans', sans-serif;
             --transition: all 0.25s ease;
+
+            /* Fluid Spacing & Typography */
+            --container-padding: clamp(1rem, 4vw, 2rem);
+            --h1-size: clamp(1.8rem, 4.5vw, 2.5rem);
+            --h2-size: clamp(1.6rem, 3.5vw, 2.2rem);
+            --body-size: clamp(0.98rem, 1.2vw, 1.05rem);
         }
 
-        * {
+        /* Basic Resets & Safety Guidelines */
+        *, *::before, *::after {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+        }
+
+        html, body {
+            width: 100%;
+            overflow-x: hidden; /* Prevents layout leaks at < 320px */
         }
 
         body {
@@ -41,11 +53,17 @@
             min-height: 100vh;
         }
 
+        img, video, iframe {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
         .container {
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 var(--container-padding);
         }
 
         h1, h2, h3, h4 {
@@ -55,17 +73,20 @@
         }
 
         p {
-            font-size: 1.05rem;
+            font-size: var(--body-size);
             color: var(--text-muted);
             margin-bottom: 1.5rem;
         }
 
-        /* --- STYLISH BUTTONS --- */
+        /* --- ACCESSIBLE TOUCH-TARGET BUTTONS --- */
         .btn {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             background-color: var(--primary);
             color: var(--white);
-            padding: 0.9rem 2rem;
+            padding: 0.85rem 2rem;
+            min-height: 44px; /* Touch target baseline */
             border-radius: 50px;
             text-decoration: none;
             font-weight: 500;
@@ -87,7 +108,8 @@
         .btn-nav {
             background-color: var(--btn-deep) !important;
             border-color: var(--btn-deep) !important;
-            padding: 0.7rem 2.2rem !important;
+            padding: 0.6rem 1.8rem !important;
+            min-height: 44px;
             font-size: 0.85rem !important;
             letter-spacing: 1px;
             color: #ffffff !important; 
@@ -100,7 +122,7 @@
             color: var(--btn-deep) !important;
         }
 
-        /* --- STICKY NAVIGATION --- */
+        /* --- STICKY NAVIGATION ARCHITECTURE --- */
         header {
             background-color: var(--bg-warm-2);
             position: sticky;
@@ -114,18 +136,26 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 100px;
+            min-height: 80px;
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
         }
 
         .nav-logo img {
-            height: 70px;
-            display: block;
+            height: clamp(50px, 8vw, 70px);
+            width: auto;
+            object-fit: contain;
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 2.5rem;
+            gap: clamp(1rem, 2vw, 2.5rem);
+            align-items: center;
+        }
+
+        .nav-links > li {
+            display: flex;
             align-items: center;
         }
 
@@ -136,8 +166,10 @@
             font-size: 0.85rem;
             letter-spacing: 1px;
             transition: var(--transition);
-            display: inline-block;
-            padding: 0.5rem 0;
+            display: inline-flex;
+            align-items: center;
+            min-height: 44px; /* Touch target padding */
+            padding: 0 0.25rem;
         }
 
         .nav-links > li > a:not(.btn):hover {
@@ -161,22 +193,26 @@
             list-style: none;
             display: none;
             min-width: 180px;
-            margin-top: 0px; 
-            border-top: 12px solid transparent; 
+            border-top: 8px solid transparent;
+            z-index: 1001;
         }
 
-        .dropdown:hover .dropdown-menu {
+        .dropdown:hover .dropdown-menu,
+        .dropdown:focus-within .dropdown-menu {
             display: block;
         }
 
         .dropdown-menu a {
-            padding: 0.7rem 1.2rem;
-            display: block;
+            padding: 0.75rem 1.2rem;
+            display: flex;
+            align-items: center;
+            min-height: 44px;
             color: var(--text-dark);
             text-decoration: none;
             font-size: 0.85rem;
             letter-spacing: 0.5px;
             transition: var(--transition);
+            white-space: nowrap;
         }
 
         .dropdown-menu a:hover {
@@ -189,7 +225,7 @@
         .hero-banner-frame {
             width: 100%;
             position: relative;
-            padding-top: 26.31%; 
+            padding-top: clamp(200px, 26vw, 320px); 
             overflow: hidden;
             background-color: var(--bg-warm-1);
         }
@@ -214,10 +250,11 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 1rem;
         }
 
         .hero-overlay-logo {
-            max-width: 25%;
+            width: clamp(140px, 25vw, 300px);
             height: auto;
             max-height: 80%;
             object-fit: contain !important;
@@ -228,7 +265,7 @@
         /* --- MODULE ROUTE VIEWS CONTROL PANELS --- */
         .page-view {
             display: none;
-            padding: 80px 0;
+            padding: clamp(2.5rem, 6vw, 5rem) 0;
             flex: 1;
         }
 
@@ -240,13 +277,12 @@
         #home-view {
             text-align: center;
             background: linear-gradient(180deg, var(--bg-warm-2) 0%, var(--bg-warm-1) 100%);
-            padding-top: 60px;
         }
 
         .hero-title {
-            font-size: 2.4rem;
+            font-size: var(--h1-size);
             line-height: 1.3;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
@@ -254,18 +290,17 @@
 
         .hero-bio-container {
             max-width: 760px;
-            margin: 0 auto 3.5rem;
+            margin: 0 auto 2.5rem;
             text-align: center;
         }
         
         .hero-bio-container p {
-            font-size: 1.1rem;
             line-height: 1.7;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
         }
         
         .hero-bio-container p.bio-lead {
-            font-size: 1.25rem;
+            font-size: clamp(1.1rem, 2vw, 1.25rem);
             font-weight: 500;
             color: var(--primary);
             font-family: var(--font-serif);
@@ -274,9 +309,9 @@
         .bottom-signature-tagline {
             font-family: var(--font-serif);
             font-style: italic;
-            font-size: 1.6rem;
+            font-size: clamp(1.3rem, 3vw, 1.6rem);
             color: var(--primary);
-            margin: 6rem auto 2rem;
+            margin: clamp(3rem, 8vw, 6rem) auto 2rem;
             letter-spacing: 0.5px;
             text-align: center;
             max-width: 600px;
@@ -294,9 +329,9 @@
 
         .delivery-models {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 2.5rem;
-            margin-top: 5rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3.5rem;
             max-width: 900px;
             margin-left: auto;
             margin-right: auto;
@@ -304,7 +339,7 @@
 
         .model-card {
             background: var(--white);
-            padding: 2.5rem;
+            padding: clamp(1.5rem, 4vw, 2.5rem);
             border-radius: 16px;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.01);
             border: 1px solid rgba(1, 13, 121, 0.03);
@@ -340,12 +375,12 @@
         .section-header {
             text-align: center;
             max-width: 800px;
-            margin: 0 auto 4rem;
+            margin: 0 auto clamp(2rem, 5vw, 4rem);
         }
 
         .section-header h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.2rem;
+            font-size: var(--h2-size);
+            margin-bottom: 1rem;
         }
 
         .accordion-wrapper {
@@ -362,13 +397,14 @@
         }
 
         .accordion-header {
-            padding: 1.5rem 2rem;
+            padding: 1.25rem 1.5rem;
+            min-height: 52px; /* Enhanced Touch Area */
             display: flex;
             justify-content: space-between;
             align-items: center;
             cursor: pointer;
             font-family: var(--font-serif);
-            font-size: 1.2rem;
+            font-size: clamp(1.05rem, 2vw, 1.2rem);
             color: var(--primary);
             user-select: none;
             transition: var(--transition);
@@ -382,20 +418,20 @@
             font-size: 1.4rem;
             font-weight: 300;
             transition: var(--transition);
+            margin-left: 1rem;
         }
 
         .accordion-content {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease-out;
-            padding: 0 2rem;
+            transition: max-height 0.35s cubic-bezier(0, 1, 0, 1);
+            padding: 0 1.5rem;
             background-color: var(--white);
         }
 
         .accordion-content .content-inner {
             padding-bottom: 1.5rem;
             padding-top: 0.5rem;
-            font-size: 1.05rem;
             color: var(--text-muted);
         }
 
@@ -419,14 +455,15 @@
         }
 
         .accordion-item.active .accordion-content {
-            max-height: 1000px; 
+            max-height: 1200px; 
+            transition: max-height 0.5s ease-in-out;
         }
 
         /* --- TEAM STRUCTURAL LAYOUT GRID --- */
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
             margin-top: 2rem;
             justify-content: center;
         }
@@ -435,14 +472,14 @@
             background: var(--white);
             border-radius: 16px;
             text-align: center;
-            padding: 3.5rem 2.5rem;
+            padding: clamp(2rem, 4vw, 3.5rem) clamp(1.25rem, 3vw, 2.5rem);
             border: 1px solid rgba(0,0,0,0.02);
             box-shadow: 0 4px 25px rgba(0,0,0,0.01);
         }
 
         .team-profile-img {
-            width: 180px;
-            height: 180px;
+            width: clamp(140px, 15vw, 180px);
+            height: clamp(140px, 15vw, 180px);
             border-radius: 50%;
             object-fit: cover;
             margin: 0 auto 1.5rem;
@@ -452,38 +489,37 @@
         }
 
         .team-role {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 1px;
             color: var(--text-muted);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
             font-weight: 600;
         }
 
         .team-bio {
             text-align: left;
-            font-size: 1rem;
             margin-bottom: 0;
             line-height: 1.6;
         }
 
-        /* --- CONTACT ROW PROFILE LAYOUT --- */
+        /* --- CONTACT LAYOUT & FORM --- */
         .contact-layout {
             display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            gap: 4rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: clamp(2rem, 5vw, 4rem);
             align-items: start;
         }
 
         .contact-form {
             background: var(--white);
-            padding: 3rem;
+            padding: clamp(1.5rem, 4vw, 3rem);
             border-radius: 20px;
             box-shadow: 0 4px 30px rgba(0,0,0,0.01);
         }
 
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
         }
 
         .form-group label {
@@ -497,7 +533,8 @@
         .form-group input, 
         .form-group textarea {
             width: 100%;
-            padding: 0.9rem 1.2rem;
+            padding: 0.85rem 1rem;
+            min-height: 44px; /* Touch friendly controls */
             border-radius: 8px;
             border: 1px solid rgba(1, 13, 121, 0.1);
             background-color: var(--bg-warm-2);
@@ -507,19 +544,19 @@
         }
 
         .contact-info-panel h3 {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             margin-bottom: 0.75rem;
-            margin-top: 2rem;
+            margin-top: 1.75rem;
         }
         
         .contact-info-panel h3:first-child { margin-top: 0; }
 
         .contact-welcoming-frame {
             width: 100%;
-            height: 200px;
+            height: 180px;
             background-color: var(--bg-warm-1);
             border-radius: 12px;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -535,23 +572,23 @@
         }
 
         .pricing-list-section {
-            margin-bottom: 4rem;
+            margin-bottom: clamp(2.5rem, 5vw, 4rem);
         }
 
         .pricing-list-section h2 {
             font-family: var(--font-serif);
-            font-size: 1.75rem;
+            font-size: 1.6rem;
             color: var(--primary);
             border-bottom: 1px solid rgba(1, 13, 121, 0.1);
             padding-bottom: 0.5rem;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
 
         .pricing-list-item {
             background-color: var(--white);
-            padding: 2rem;
+            padding: clamp(1.25rem, 3vw, 2rem);
             border-radius: 12px;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
             border: 1px solid rgba(1, 13, 121, 0.02);
             box-shadow: 0 2px 12px rgba(0,0,0,0.01);
         }
@@ -560,35 +597,34 @@
             display: flex;
             justify-content: space-between;
             align-items: baseline;
-            margin-bottom: 0.75rem;
-            gap: 1.5rem;
+            margin-bottom: 0.5rem;
+            gap: 1rem;
+            flex-wrap: wrap;
         }
 
         .pricing-list-header h3 {
             font-family: var(--font-sans);
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             font-weight: 600;
             color: var(--primary);
         }
 
         .pricing-list-price {
             font-family: var(--font-serif);
-            font-size: 1.4rem;
+            font-size: 1.35rem;
             font-weight: 600;
             color: var(--primary);
             white-space: nowrap;
         }
 
         .pricing-list-item p {
-            font-size: 1rem;
-            color: var(--text-muted);
             margin-bottom: 0;
             line-height: 1.6;
         }
 
         .pricing-footer-disclaimer {
-            margin-top: 4rem;
-            padding: 2.5rem;
+            margin-top: 3rem;
+            padding: clamp(1.25rem, 3vw, 2.5rem);
             background-color: var(--white);
             border-radius: 12px;
             border-left: 3px solid var(--primary);
@@ -596,8 +632,6 @@
         }
 
         .pricing-footer-disclaimer p {
-            font-size: 1rem;
-            color: var(--text-muted);
             margin-bottom: 1rem;
             line-height: 1.6;
         }
@@ -606,21 +640,21 @@
             margin-bottom: 0;
         }
 
-        /* --- STANDALONE INTERFACE LAYOUT WRAPPERS --- */
+        /* --- POLICY LAYOUT WRAPPERS --- */
         .policy-document-layout {
             max-width: 800px;
             margin: 0 auto;
             background-color: var(--white);
-            padding: 4rem;
+            padding: clamp(1.5rem, 5vw, 4rem);
             border-radius: 20px;
             box-shadow: 0 4px 30px rgba(0,0,0,0.01);
             border: 1px solid rgba(1, 13, 121, 0.02);
         }
         
         .policy-document-layout h2 {
-            font-size: 1.5rem;
-            margin-top: 2.5rem;
-            margin-bottom: 1rem;
+            font-size: 1.35rem;
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
             border-bottom: 1px solid rgba(1, 13, 121, 0.05);
             padding-bottom: 0.25rem;
         }
@@ -628,33 +662,27 @@
         .policy-document-layout h2:first-of-type {
             margin-top: 0;
         }
-        
-        .policy-document-layout p {
-            font-size: 1.05rem;
-            line-height: 1.7;
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-        }
 
         /* --- GLOBAL FOOTER DESIGNS --- */
         footer {
             background-color: var(--primary);
             color: var(--white);
-            padding: 5rem 0 3rem;
+            padding: clamp(3rem, 6vw, 5rem) 0 3rem;
             margin-top: auto;
         }
 
         .footer-grid {
             display: grid;
-            grid-template-columns: 1.5fr 1fr 1fr;
-            gap: 3rem;
-            padding-bottom: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2.5rem;
+            padding-bottom: 2.5rem;
             border-bottom: 1px solid rgba(255,255,255,0.1);
             align-items: start;
         }
 
         .footer-logo img {
-            height: 75px;
+            height: 65px;
+            width: auto;
             margin-bottom: 1.25rem;
             background: transparent;
         }
@@ -665,10 +693,9 @@
             margin-bottom: 0.5rem;
         }
 
-        .footer-nav-block h4,
-        .footer-socials h4 {
+        .footer-nav-block h4 {
             font-family: var(--font-serif);
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             margin-bottom: 1.25rem;
             color: var(--white);
             font-weight: 400;
@@ -680,27 +707,21 @@
             list-style: none;
             display: flex;
             flex-direction: column;
-            gap: 0.6rem;
+            gap: 0.4rem;
         }
 
-        .footer-nav-block a,
-        .social-links a {
+        .footer-nav-block a {
             color: rgba(255,255,255,0.75);
             text-decoration: none;
             font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            min-height: 38px; /* Touch target */
             transition: var(--transition);
         }
 
-        .footer-nav-block a:hover,
-        .social-links a:hover { 
+        .footer-nav-block a:hover { 
             color: var(--white); 
-        }
-
-        .social-links {
-            display: flex;
-            flex-direction: column;
-            gap: 0.6rem;
-            list-style: none;
         }
 
         .footer-copyright {
@@ -712,262 +733,80 @@
         }
 
         /* ==========================================================================
-           MOBILE-ONLY RESPONSIVE SYSTEM (MAX-WIDTH: 768PX)
-           All edits for small screens are centralized below with easy customization tags.
+           RESPONSIVE MEDIA QUERIES (MOBILE-FIRST BREAKPOINT OVERRIDES)
            ========================================================================== */
-        @media (max-width: 768px) {
-
-            /* ----------------------------------------------------------------------
-               1. HEADER & NAVIGATION (MOBILE)
-               ---------------------------------------------------------------------- */
+        
+        /* MOBILE VIEWPORTS (< 768px) */
+        @media (max-width: 767.98px) {
             .nav-container {
-                height: auto;
-                /* CUSTOMIZE MOBILE HEADER PADDING HERE */
-                padding: 1.25rem 1rem;
                 flex-direction: column;
-                gap: 1rem;
-            }
-
-            .nav-logo img {
-                /* CUSTOMIZE MOBILE LOGO SIZE HERE */
-                height: 55px;
+                gap: 0.75rem;
+                padding-top: 0.75rem;
+                padding-bottom: 0.75rem;
             }
 
             .nav-links {
                 width: 100%;
-                /* CUSTOMIZE NAVIGATION LINK GAP HERE */
-                gap: 0.75rem;
+                gap: 0.4rem;
                 flex-wrap: wrap;
                 justify-content: center;
-                align-items: center;
             }
 
             .nav-links > li > a {
-                /* CUSTOMIZE NAV LINK FONT SIZE & SPACING HERE */
                 font-size: 0.8rem;
-                padding: 0.3rem 0.2rem;
+                padding: 0.3rem 0.5rem;
             }
 
-            /* Stack or scale the dual action header buttons */
             .btn-nav {
-                /* CUSTOMIZE NAV BUTTON MOBILE PADDING & SIZE HERE */
-                padding: 0.6rem 1.2rem !important;
+                padding: 0.5rem 1rem !important;
                 font-size: 0.75rem !important;
+                min-height: 40px;
             }
 
-            /* Dropdown adjustments on small touch displays */
             .dropdown-menu {
                 position: static;
                 transform: none;
                 box-shadow: none;
                 border: 1px solid rgba(1, 13, 121, 0.08);
-                margin-top: 0.5rem;
+                margin-top: 0.25rem;
                 width: 100%;
                 text-align: center;
             }
 
-            /* ----------------------------------------------------------------------
-               2. HERO BANNER & SPACING (MOBILE)
-               ---------------------------------------------------------------------- */
-            .hero-banner-frame {
-                /* CUSTOMIZE MOBILE HERO HEIGHT RATIO HERE */
-                padding-top: 45%; 
-            }
-
-            .hero-overlay-logo {
-                /* CUSTOMIZE HERO OVERLAY LOGO MAX-WIDTH HERE */
-                max-width: 55%;
-            }
-
-            .page-view {
-                /* CUSTOMIZE MOBILE PAGE SECTION PADDING HERE */
-                padding: 40px 0;
-            }
-
-            #home-view {
-                padding-top: 35px;
-            }
-
-            .hero-title {
-                /* CUSTOMIZE MOBILE HERO MAIN HEADING FONT SIZE HERE */
-                font-size: 1.75rem;
-                line-height: 1.3;
-                margin-bottom: 1.25rem;
-            }
-
-            .hero-bio-container {
-                margin-bottom: 2rem;
-            }
-
-            .hero-bio-container p {
-                /* CUSTOMIZE MOBILE BODY TEXT SIZE HERE */
-                font-size: 0.98rem;
-                margin-bottom: 1rem;
-            }
-
-            .hero-bio-container p.bio-lead {
-                /* CUSTOMIZE MOBILE LEAD PARAGRAPH FONT SIZE HERE */
-                font-size: 1.1rem;
-            }
-
-            .bottom-signature-tagline {
-                /* CUSTOMIZE MOBILE SIGNATURE TAGLINE FONT SIZE HERE */
-                font-size: 1.3rem;
-                margin: 3.5rem auto 1.5rem;
-            }
-
-            /* ----------------------------------------------------------------------
-               3. GRID LAYOUTS (SINGLE COLUMN COLLAPSE FOR MOBILE)
-               ---------------------------------------------------------------------- */
-            /* Delivery Models (In Clinic / Virtual) */
-            .delivery-models {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-                margin-top: 3rem;
-            }
-
-            .model-card {
-                /* CUSTOMIZE CARD INNER PADDING HERE */
-                padding: 1.75rem 1.25rem;
-            }
-
-            .model-img-placeholder {
-                /* CUSTOMIZE CARD IMAGE PLACEHOLDER HEIGHT HERE */
-                height: 140px;
-            }
-
-            /* Team Grid */
-            .team-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .team-card {
-                /* CUSTOMIZE TEAM CARD PADDING HERE */
-                padding: 2.25rem 1.5rem;
-            }
-
-            .team-profile-img {
-                /* CUSTOMIZE TEAM PROFILE IMAGE SIZE HERE */
-                width: 140px;
-                height: 140px;
-            }
-
-            /* Section Headers */
-            .section-header {
-                margin-bottom: 2.5rem;
-            }
-
-            .section-header h2 {
-                /* CUSTOMIZE SECTION HEADER H2 FONT SIZE HERE */
-                font-size: 1.85rem;
-                margin-bottom: 0.75rem;
-            }
-
-            /* Accordions */
-            .accordion-header {
-                /* CUSTOMIZE ACCORDION TITLE PADDING & SIZE HERE */
-                padding: 1.1rem 1.25rem;
-                font-size: 1.05rem;
-            }
-
-            .accordion-content {
-                padding: 0 1.25rem;
-            }
-
-            /* Pricing List Layout */
-            .pricing-list-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.25rem;
-            }
-
-            .pricing-list-item {
-                /* CUSTOMIZE PRICING CARD PADDING HERE */
-                padding: 1.25rem;
-            }
-
-            .pricing-list-price {
-                font-size: 1.25rem;
-            }
-
-            .pricing-footer-disclaimer {
-                padding: 1.5rem;
-                margin-top: 2.5rem;
-            }
-
-            /* Policy Containers */
-            .policy-document-layout {
-                /* CUSTOMIZE POLICY / LEGAL PAGE PADDING HERE */
-                padding: 1.75rem 1.25rem;
-                border-radius: 12px;
-            }
-
-            .policy-document-layout h1 {
-                font-size: 1.75rem !important;
-            }
-
-            .policy-document-layout h2 {
-                font-size: 1.25rem;
-            }
-
-            /* ----------------------------------------------------------------------
-               4. FORMS & EMBEDS (MOBILE RESPONSIVE & TOUCH READY)
-               ---------------------------------------------------------------------- */
-            .contact-layout {
-                grid-template-columns: 1fr;
-                gap: 2.5rem;
-            }
-
-            .contact-form {
-                /* CUSTOMIZE CONTACT FORM PADDING HERE */
-                padding: 1.75rem 1.25rem;
-                border-radius: 14px;
-            }
-
-            .form-group input,
-            .form-group textarea {
-                /* CUSTOMIZE FORM TOUCH TARGET PADDING & FONT SIZE HERE */
-                padding: 0.85rem 1rem;
-                font-size: 0.95rem;
-            }
-
-            .contact-welcoming-frame {
-                height: 160px;
-            }
-
-            /* Scale maps iframe cleanly to full container width */
-            .contact-info-panel iframe {
-                width: 100% !important;
-                /* CUSTOMIZE MAP HEIGHT HERE */
-                height: 220px !important;
-            }
-
-            /* ----------------------------------------------------------------------
-               5. FOOTER (CENTER ALIGNED FOR MOBILE)
-               ---------------------------------------------------------------------- */
-            footer {
-                /* CUSTOMIZE FOOTER TOP/BOTTOM PADDING HERE */
-                padding: 3.5rem 0 2rem;
-            }
-
             .footer-grid {
-                grid-template-columns: 1fr;
-                /* CUSTOMIZE FOOTER CENTERED LAYOUT ALIGNMENT */
                 text-align: center;
-                gap: 2.25rem;
-                padding-bottom: 2rem;
             }
 
             .footer-logo img {
                 margin-left: auto;
                 margin-right: auto;
-                height: 60px;
             }
 
-            .footer-nav-block ul,
-            .social-links {
+            .footer-nav-block ul {
                 align-items: center;
+            }
+        }
+
+        /* TABLET VIEWPORTS (768px - 1024px) */
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .nav-container {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+
+            .nav-links {
+                gap: 1.25rem;
+            }
+
+            .contact-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* DESKTOP VIEWPORTS (> 1024px) */
+        @media (min-width: 1024.02px) {
+            .footer-grid {
+                grid-template-columns: 1.5fr 1fr 1fr;
             }
         }
     </style>
@@ -978,23 +817,22 @@
     <header>
         <div class="container nav-container">
             <a href="#" class="nav-logo" onclick="switchView('home-view', true)">
-                <img src="Untitled design (1).png" alt="Good Company Speech & Language Logo">
+                <img src="blue logo.png" alt="Good Company Speech & Language Logo">
             </a>
             <nav>
                 <ul class="nav-links">
                     <li><a href="#" onclick="switchView('home-view', true)">HOME</a></li>
+                    <li><a href="#" onclick="switchView('about-view', false)">TEAM</a></li>
                     <li class="dropdown">
-                        <a href="#" onclick="switchView('process-view', false)">ABOUT ▾</a>
+                        <a href="#" onclick="switchView('services-view', false)">SERVICES ▾</a>
                         <ul class="dropdown-menu">
-                            <li><a href="#" onclick="switchView('process-view', false)">OUR PROCESS</a></li>
-                            <li><a href="#" onclick="switchView('services-view', false)">WHAT WE TREAT</a></li>
-                            <li><a href="#" onclick="switchView('about-view', false)">OUR TEAM</a></li>
+                            <li><a href="#" onclick="switchView('process-view', false)">Our Process</a></li>
+                            <li><a href="#" onclick="switchView('services-view', false)">What We Treat</a></li>
+                            <li><a href="#" onclick="switchView('pricing-view', false)">Pricing</a></li>
                         </ul>
                     </li>
-                    <!-- Clicking SERVICES maps directly to the standalone SLP Pricing list view -->
-                    <li><a href="#" onclick="switchView('pricing-view', false)">SERVICES</a></li>
                     
-                    <!-- Symmetrically duplicated primary action buttons setup -->
+                    <!-- Primary action buttons -->
                     <li><a href="#" onclick="switchView('contact-view', false)" class="btn btn-nav">CONTACT US</a></li>
                     <li><a href="https://goodcompanytherapy.janeapp.com" target="_blank" class="btn btn-nav">BOOK</a></li>
                 </ul>
@@ -1336,7 +1174,7 @@
     <div id="privacy-policy-view" class="page-view">
         <div class="container">
             <div class="policy-document-layout">
-                <h1 style="margin-bottom: 2rem; font-size: 2.2rem; border-bottom: 2px solid var(--primary); padding-bottom: 0.5rem;">Privacy Policy</h1>
+                <h1 style="margin-bottom: 2rem; font-size: clamp(1.8rem, 4vw, 2.2rem); border-bottom: 2px solid var(--primary); padding-bottom: 0.5rem;">Privacy Policy</h1>
                 <p>At Good Company Speech & Language, your trust and privacy are our top priorities. We protect your child’s personal health information in strict accordance with Ontario’s Personal Health Information Protection Act (PHIPA) and the College of Audiologists and Speech-Language Pathologists of Ontario (CASLPO).</p>
                 
                 <h2>Collection of Information</h2>
@@ -1421,7 +1259,7 @@
     <div id="cancellation-policy-view" class="page-view">
         <div class="container">
             <div class="policy-document-layout">
-                <h1 style="margin-bottom: 2rem; font-size: 2.2rem; border-bottom: 2px solid var(--primary); padding-bottom: 0.5rem;">Cancellation & No-Show Policy</h1>
+                <h1 style="margin-bottom: 2rem; font-size: clamp(1.8rem, 4vw, 2.2rem); border-bottom: 2px solid var(--primary); padding-bottom: 0.5rem;">Cancellation & No-Show Policy</h1>
                 
                 <h2>Notice Requirements and Fees</h2>
                 <p>If you cancel your appointment more than 24 hours in advance, you will not incur any fees.</p>
@@ -1454,14 +1292,14 @@
                 </div>
             </div>
 
-            <!-- Footer links fully reflective of header updates -->
             <div class="footer-nav-block">
                 <h4>Explore</h4>
                 <ul>
                     <li><a href="#" onclick="switchView('home-view', true)">Home</a></li>
+                    <li><a href="#" onclick="switchView('about-view', false)">Team</a></li>
                     <li><a href="#" onclick="switchView('process-view', false)">Our Process</a></li>
                     <li><a href="#" onclick="switchView('services-view', false)">What We Treat</a></li>
-                    <li><a href="#" onclick="switchView('pricing-view', false)">Services & Pricing</a></li>
+                    <li><a href="#" onclick="switchView('pricing-view', false)">Pricing</a></li>
                 </ul>
             </div>
 
