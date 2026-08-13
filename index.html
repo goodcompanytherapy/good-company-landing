@@ -83,7 +83,7 @@
             color: var(--primary);
         }
 
-        /* Pristine pill shape layout setup for header scheduling link asset */
+        /* Twin primary buttons in header menu */
         .btn-nav {
             background-color: var(--btn-deep) !important;
             border-color: var(--btn-deep) !important;
@@ -144,7 +144,7 @@
             font-weight: 700;
         }
 
-        /* Dropdown Architecture Matrix */
+        /* Dropdown Structure Layout */
         .dropdown {
             position: relative;
         }
@@ -185,11 +185,11 @@
             font-weight: 600;
         }
 
-        /* --- HERO BANNER FRAME MODULE --- */
+        /* --- HERO BANNER LAYER FRAME --- */
         .hero-banner-frame {
             width: 100%;
             position: relative;
-            padding-top: 26.31%; /* Accurate 19W x 5H Layout calculations */
+            padding-top: 26.31%; 
             overflow: hidden;
             background-color: var(--bg-warm-1);
         }
@@ -225,7 +225,7 @@
             filter: brightness(0) invert(1); 
         }
 
-        /* --- MODULE ROUTE VIEWS CONTROL CONTEXTS --- */
+        /* --- MODULE ROUTE VIEWS CONTROL PANELS --- */
         .page-view {
             display: none;
             padding: 80px 0;
@@ -292,7 +292,6 @@
             margin: 0 auto 2rem;
         }
 
-        /* Delivery Models updated into a sleek two-column layout */
         .delivery-models {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -423,7 +422,7 @@
             max-height: 1000px; 
         }
 
-        /* --- TEAM STRUCTURAL CONFIGURATIONS --- */
+        /* --- TEAM STRUCTURAL LAYOUT GRID --- */
         .team-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -468,7 +467,7 @@
             line-height: 1.6;
         }
 
-        /* --- RESTORED DESIGN SIGHT UNIFIED CONTACT FRAME --- */
+        /* --- CONTACT ROW PROFILE LAYOUT --- */
         .contact-layout {
             display: grid;
             grid-template-columns: 1.2fr 1fr;
@@ -607,7 +606,7 @@
             margin-bottom: 0;
         }
 
-        /* --- STANDALONE TEXT COPIES LAYOUT WRAPPER --- */
+        /* --- STANDALONE INTERFACE LAYOUT WRAPPERS --- */
         .policy-document-layout {
             max-width: 800px;
             margin: 0 auto;
@@ -712,22 +711,270 @@
             width: 100%;
         }
 
-        /* --- RESPONSIVE MEDIA BREAKPOINTS --- */
-        @media (max-width: 968px) {
-            .contact-layout { grid-template-columns: 1fr; gap: 3rem; }
-            .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 2.5rem; }
-            .nav-links { gap: 1rem; }
-            .nav-container { height: auto; padding: 1.5rem 2rem; flex-direction: column; gap: 1.2rem; }
-            .hero-banner-frame { padding-top: 40%; } 
-            .hero-overlay-logo { max-width: 50%; }
-            .pricing-list-header { flex-direction: column; gap: 0.25rem; }
-            .policy-document-layout { padding: 2rem; }
-            .delivery-models { grid-template-columns: 1fr; }
+        /* ==========================================================================
+           MOBILE-ONLY RESPONSIVE SYSTEM (MAX-WIDTH: 768PX)
+           All edits for small screens are centralized below with easy customization tags.
+           ========================================================================== */
+        @media (max-width: 768px) {
+
+            /* ----------------------------------------------------------------------
+               1. HEADER & NAVIGATION (MOBILE)
+               ---------------------------------------------------------------------- */
+            .nav-container {
+                height: auto;
+                /* CUSTOMIZE MOBILE HEADER PADDING HERE */
+                padding: 1.25rem 1rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-logo img {
+                /* CUSTOMIZE MOBILE LOGO SIZE HERE */
+                height: 55px;
+            }
+
+            .nav-links {
+                width: 100%;
+                /* CUSTOMIZE NAVIGATION LINK GAP HERE */
+                gap: 0.75rem;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .nav-links > li > a {
+                /* CUSTOMIZE NAV LINK FONT SIZE & SPACING HERE */
+                font-size: 0.8rem;
+                padding: 0.3rem 0.2rem;
+            }
+
+            /* Stack or scale the dual action header buttons */
+            .btn-nav {
+                /* CUSTOMIZE NAV BUTTON MOBILE PADDING & SIZE HERE */
+                padding: 0.6rem 1.2rem !important;
+                font-size: 0.75rem !important;
+            }
+
+            /* Dropdown adjustments on small touch displays */
+            .dropdown-menu {
+                position: static;
+                transform: none;
+                box-shadow: none;
+                border: 1px solid rgba(1, 13, 121, 0.08);
+                margin-top: 0.5rem;
+                width: 100%;
+                text-align: center;
+            }
+
+            /* ----------------------------------------------------------------------
+               2. HERO BANNER & SPACING (MOBILE)
+               ---------------------------------------------------------------------- */
+            .hero-banner-frame {
+                /* CUSTOMIZE MOBILE HERO HEIGHT RATIO HERE */
+                padding-top: 45%; 
+            }
+
+            .hero-overlay-logo {
+                /* CUSTOMIZE HERO OVERLAY LOGO MAX-WIDTH HERE */
+                max-width: 55%;
+            }
+
+            .page-view {
+                /* CUSTOMIZE MOBILE PAGE SECTION PADDING HERE */
+                padding: 40px 0;
+            }
+
+            #home-view {
+                padding-top: 35px;
+            }
+
+            .hero-title {
+                /* CUSTOMIZE MOBILE HERO MAIN HEADING FONT SIZE HERE */
+                font-size: 1.75rem;
+                line-height: 1.3;
+                margin-bottom: 1.25rem;
+            }
+
+            .hero-bio-container {
+                margin-bottom: 2rem;
+            }
+
+            .hero-bio-container p {
+                /* CUSTOMIZE MOBILE BODY TEXT SIZE HERE */
+                font-size: 0.98rem;
+                margin-bottom: 1rem;
+            }
+
+            .hero-bio-container p.bio-lead {
+                /* CUSTOMIZE MOBILE LEAD PARAGRAPH FONT SIZE HERE */
+                font-size: 1.1rem;
+            }
+
+            .bottom-signature-tagline {
+                /* CUSTOMIZE MOBILE SIGNATURE TAGLINE FONT SIZE HERE */
+                font-size: 1.3rem;
+                margin: 3.5rem auto 1.5rem;
+            }
+
+            /* ----------------------------------------------------------------------
+               3. GRID LAYOUTS (SINGLE COLUMN COLLAPSE FOR MOBILE)
+               ---------------------------------------------------------------------- */
+            /* Delivery Models (In Clinic / Virtual) */
+            .delivery-models {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                margin-top: 3rem;
+            }
+
+            .model-card {
+                /* CUSTOMIZE CARD INNER PADDING HERE */
+                padding: 1.75rem 1.25rem;
+            }
+
+            .model-img-placeholder {
+                /* CUSTOMIZE CARD IMAGE PLACEHOLDER HEIGHT HERE */
+                height: 140px;
+            }
+
+            /* Team Grid */
+            .team-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .team-card {
+                /* CUSTOMIZE TEAM CARD PADDING HERE */
+                padding: 2.25rem 1.5rem;
+            }
+
+            .team-profile-img {
+                /* CUSTOMIZE TEAM PROFILE IMAGE SIZE HERE */
+                width: 140px;
+                height: 140px;
+            }
+
+            /* Section Headers */
+            .section-header {
+                margin-bottom: 2.5rem;
+            }
+
+            .section-header h2 {
+                /* CUSTOMIZE SECTION HEADER H2 FONT SIZE HERE */
+                font-size: 1.85rem;
+                margin-bottom: 0.75rem;
+            }
+
+            /* Accordions */
+            .accordion-header {
+                /* CUSTOMIZE ACCORDION TITLE PADDING & SIZE HERE */
+                padding: 1.1rem 1.25rem;
+                font-size: 1.05rem;
+            }
+
+            .accordion-content {
+                padding: 0 1.25rem;
+            }
+
+            /* Pricing List Layout */
+            .pricing-list-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.25rem;
+            }
+
+            .pricing-list-item {
+                /* CUSTOMIZE PRICING CARD PADDING HERE */
+                padding: 1.25rem;
+            }
+
+            .pricing-list-price {
+                font-size: 1.25rem;
+            }
+
+            .pricing-footer-disclaimer {
+                padding: 1.5rem;
+                margin-top: 2.5rem;
+            }
+
+            /* Policy Containers */
+            .policy-document-layout {
+                /* CUSTOMIZE POLICY / LEGAL PAGE PADDING HERE */
+                padding: 1.75rem 1.25rem;
+                border-radius: 12px;
+            }
+
+            .policy-document-layout h1 {
+                font-size: 1.75rem !important;
+            }
+
+            .policy-document-layout h2 {
+                font-size: 1.25rem;
+            }
+
+            /* ----------------------------------------------------------------------
+               4. FORMS & EMBEDS (MOBILE RESPONSIVE & TOUCH READY)
+               ---------------------------------------------------------------------- */
+            .contact-layout {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .contact-form {
+                /* CUSTOMIZE CONTACT FORM PADDING HERE */
+                padding: 1.75rem 1.25rem;
+                border-radius: 14px;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                /* CUSTOMIZE FORM TOUCH TARGET PADDING & FONT SIZE HERE */
+                padding: 0.85rem 1rem;
+                font-size: 0.95rem;
+            }
+
+            .contact-welcoming-frame {
+                height: 160px;
+            }
+
+            /* Scale maps iframe cleanly to full container width */
+            .contact-info-panel iframe {
+                width: 100% !important;
+                /* CUSTOMIZE MAP HEIGHT HERE */
+                height: 220px !important;
+            }
+
+            /* ----------------------------------------------------------------------
+               5. FOOTER (CENTER ALIGNED FOR MOBILE)
+               ---------------------------------------------------------------------- */
+            footer {
+                /* CUSTOMIZE FOOTER TOP/BOTTOM PADDING HERE */
+                padding: 3.5rem 0 2rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                /* CUSTOMIZE FOOTER CENTERED LAYOUT ALIGNMENT */
+                text-align: center;
+                gap: 2.25rem;
+                padding-bottom: 2rem;
+            }
+
+            .footer-logo img {
+                margin-left: auto;
+                margin-right: auto;
+                height: 60px;
+            }
+
+            .footer-nav-block ul,
+            .social-links {
+                align-items: center;
+            }
         }
     </style>
 </head>
 <body>
 
+    <!-- STICKY GLOBAL NAVIGATION HEADER -->
     <header>
         <div class="container nav-container">
             <a href="#" class="nav-logo" onclick="switchView('home-view', true)">
@@ -737,20 +984,25 @@
                 <ul class="nav-links">
                     <li><a href="#" onclick="switchView('home-view', true)">HOME</a></li>
                     <li class="dropdown">
-                        <a href="#" onclick="switchView('process-view', false)">PROCESS ▾</a>
+                        <a href="#" onclick="switchView('process-view', false)">ABOUT ▾</a>
                         <ul class="dropdown-menu">
-                            <li><a href="#" onclick="switchView('process-view', false)">HOW IT WORKS</a></li>
-                            <li><a href="#" onclick="switchView('pricing-view', false)">PRICING</a></li>
+                            <li><a href="#" onclick="switchView('process-view', false)">OUR PROCESS</a></li>
+                            <li><a href="#" onclick="switchView('services-view', false)">WHAT WE TREAT</a></li>
+                            <li><a href="#" onclick="switchView('about-view', false)">OUR TEAM</a></li>
                         </ul>
                     </li>
-                    <li><a href="#" onclick="switchView('services-view', false)">SERVICES</a></li>
-                    <li><a href="#" onclick="switchView('about-view', false)">OUR TEAM</a></li>
+                    <!-- Clicking SERVICES maps directly to the standalone SLP Pricing list view -->
+                    <li><a href="#" onclick="switchView('pricing-view', false)">SERVICES</a></li>
+                    
+                    <!-- Symmetrically duplicated primary action buttons setup -->
+                    <li><a href="#" onclick="switchView('contact-view', false)" class="btn btn-nav">CONTACT US</a></li>
                     <li><a href="https://goodcompanytherapy.janeapp.com" target="_blank" class="btn btn-nav">BOOK</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
+    <!-- FIXED HERO BACKGROUND GRAPHIC BANNER -->
     <div id="global-hero-banner" class="hero-banner-frame">
         <img src="background header.jpg" alt="Children painting and exploring communication elements">
         <div class="hero-banner-overlay">
@@ -758,6 +1010,9 @@
         </div>
     </div>
 
+    <!-- ================= MULTI-PAGE APPLICATION CORE ROUTING VIEWPORTS ================= -->
+
+    <!-- HOME PAGE VIEW -->
     <main id="home-view" class="page-view active-view">
         <div class="container">
             <h1 class="hero-title">Speech-Language Pathology Services</h1>
@@ -787,10 +1042,11 @@
         </div>
     </main>
 
+    <!-- PROCESS / OUR PROCESS ACCORDION VIEW -->
     <div id="process-view" class="page-view">
         <div class="container">
             <div class="section-header">
-                <h2>How It Works</h2>
+                <h2>Our Process</h2>
                 <p>We partner with you at every step of your child’s development journey. Click on each step below to learn more about our process.</p>
             </div>
 
@@ -854,78 +1110,11 @@
         </div>
     </div>
 
-    <div id="pricing-view" class="page-view">
-        <div class="container">
-            <div class="section-header">
-                <h2>Pricing</h2>
-                <p>Transparent rates engineered clearly around professional care segments.</p>
-            </div>
-            
-            <div class="pricing-list-wrapper">
-                <div class="pricing-list-section">
-                    <h2>Assessment Services</h2>
-                    
-                    <div class="pricing-list-item">
-                        <div class="pricing-list-header">
-                            <h3>Initial Consultation</h3>
-                            <div class="pricing-list-price">$180</div>
-                        </div>
-                        <p>Virtual initial meeting with an SLP to review our process, consent and your child’s language needs.</p>
-                    </div>
-
-                    <div class="pricing-list-item">
-                        <div class="pricing-list-header">
-                            <h3>Comprehensive Assessment</h3>
-                            <div class="pricing-list-price">$270</div>
-                        </div>
-                        <p>45 minutes of direct assessment with an SLP, followed by clinical analysis, a parent debrief, and a customized goal report.</p>
-                    </div>
-                </div>
-
-                <div class="pricing-list-section" style="margin-bottom: 0;">
-                    <h2>Treatment Services</h2>
-                    
-                    <div class="pricing-list-item">
-                        <div class="pricing-list-header">
-                            <h3>SLP Treatment 60</h3>
-                            <div class="pricing-list-price">$180</div>
-                        </div>
-                    </div>
-
-                    <div class="pricing-list-item">
-                        <div class="pricing-list-header">
-                            <h3>SLP Treatment 45</h3>
-                            <div class="pricing-list-price">$145</div>
-                        </div>
-                    </div>
-
-                    <div class="pricing-list-item">
-                        <div class="pricing-list-header">
-                            <h3>CDA or SLP-A Treatment 60</h3>
-                            <div class="pricing-list-price">$130</div>
-                        </div>
-                    </div>
-
-                    <div class="pricing-list-item">
-                        <div class="pricing-list-header">
-                            <h3>CDA or SLP-A Treatment 45</h3>
-                            <div class="pricing-list-price">$100</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="pricing-footer-disclaimer">
-                    <p>SLP services are covered by most insurance plans. Please check with your insurance provider to determine your coverage. We do not provide direct billing.</p>
-                    <p>SLP and CDA services are covered through the Ontario Autism Program.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
+    <!-- WHAT WE TREAT / SERVICES VIEW -->
     <div id="services-view" class="page-view">
         <div class="container">
             <div class="section-header">
-                <h2>Speech-Language Pathology</h2>
+                <h2>What We Treat</h2>
                 <p>Speech Language Pathologists are registered with the College of Audiologists and Speech-Language Pathologist of Ontario (CASLPO). We provide evidenced-based treatment to support speech, language, social communication, literacy and AAC needs across development. We offer a full range of speech and language services tailored to each child’s unique communication strengths and needs.</p>
             </div>
 
@@ -999,6 +1188,76 @@
         </div>
     </div>
 
+    <!-- LIST-STYLE PRICING SHEET / SERVICES NAV PATHVIEW -->
+    <div id="pricing-view" class="page-view">
+        <div class="container">
+            <div class="section-header">
+                <h2>Services & Pricing</h2>
+                <p>Transparent rates engineered clearly around professional care segments.</p>
+            </div>
+            
+            <div class="pricing-list-wrapper">
+                <div class="pricing-list-section">
+                    <h2>Assessment Services</h2>
+                    
+                    <div class="pricing-list-item">
+                        <div class="pricing-list-header">
+                            <h3>Initial Consultation</h3>
+                            <div class="pricing-list-price">$180</div>
+                        </div>
+                        <p>Virtual initial meeting with an SLP to review our process, consent and your child’s language needs.</p>
+                    </div>
+
+                    <div class="pricing-list-item">
+                        <div class="pricing-list-header">
+                            <h3>Comprehensive Assessment</h3>
+                            <div class="pricing-list-price">$270</div>
+                        </div>
+                        <p>45 minutes of direct assessment with an SLP, followed by clinical analysis, a parent debrief, and a customized goal report.</p>
+                    </div>
+                </div>
+
+                <div class="pricing-list-section" style="margin-bottom: 0;">
+                    <h2>Treatment Services</h2>
+                    
+                    <div class="pricing-list-item">
+                        <div class="pricing-list-header">
+                            <h3>SLP Treatment 60</h3>
+                            <div class="pricing-list-price">$180</div>
+                        </div>
+                    </div>
+
+                    <div class="pricing-list-item">
+                        <div class="pricing-list-header">
+                            <h3>SLP Treatment 45</h3>
+                            <div class="pricing-list-price">$145</div>
+                        </div>
+                    </div>
+
+                    <div class="pricing-list-item">
+                        <div class="pricing-list-header">
+                            <h3>CDA or SLP-A Treatment 60</h3>
+                            <div class="pricing-list-price">$130</div>
+                        </div>
+                    </div>
+
+                    <div class="pricing-list-item">
+                        <div class="pricing-list-header">
+                            <h3>CDA or SLP-A Treatment 45</h3>
+                            <div class="pricing-list-price">$100</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pricing-footer-disclaimer">
+                    <p>SLP services are covered by most insurance plans. Please check with your insurance provider to determine your coverage. We do not provide direct billing.</p>
+                    <p>SLP and CDA services are covered through the Ontario Autism Program.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- OUR TEAM VIEW -->
     <div id="about-view" class="page-view">
         <div class="container">
             <div class="section-header">
@@ -1025,10 +1284,11 @@
         </div>
     </div>
 
+    <!-- CONTACT & LOCATION VIEW MODULE -->
     <div id="contact-view" class="page-view">
         <div class="container">
             <div class="section-header" style="text-align: left; margin-left: 0;">
-                <h2>Get In Touch</h2>
+                <h2>Contact & Location</h2>
                 <p style="font-size: 1.2rem;">We're excited to hear from you.</p>
             </div>
 
@@ -1072,6 +1332,7 @@
         </div>
     </div>
 
+    <!-- PRIVACY POLICY VIEW DOCUMENT -->
     <div id="privacy-policy-view" class="page-view">
         <div class="container">
             <div class="policy-document-layout">
@@ -1105,6 +1366,7 @@
         </div>
     </div>
 
+    <!-- FAQ PANEL VIEW -->
     <div id="faq-view" class="page-view">
         <div class="container">
             <div class="section-header">
@@ -1155,6 +1417,7 @@
         </div>
     </div>
 
+    <!-- CANCELLATION POLICY VIEW -->
     <div id="cancellation-policy-view" class="page-view">
         <div class="container">
             <div class="policy-document-layout">
@@ -1177,6 +1440,7 @@
         </div>
     </div>
 
+    <!-- GLOBAL FOOTER SYSTEM -->
     <footer>
         <div class="container footer-grid">
             <div class="footer-identity">
@@ -1190,14 +1454,14 @@
                 </div>
             </div>
 
+            <!-- Footer links fully reflective of header updates -->
             <div class="footer-nav-block">
                 <h4>Explore</h4>
                 <ul>
                     <li><a href="#" onclick="switchView('home-view', true)">Home</a></li>
                     <li><a href="#" onclick="switchView('process-view', false)">Our Process</a></li>
-                    <li><a href="#" onclick="switchView('pricing-view', false)">Pricing</a></li>
-                    <li><a href="#" onclick="switchView('services-view', false)">Services</a></li>
-                    <li><a href="#" onclick="switchView('about-view', false)">Our Team</a></li>
+                    <li><a href="#" onclick="switchView('services-view', false)">What We Treat</a></li>
+                    <li><a href="#" onclick="switchView('pricing-view', false)">Services & Pricing</a></li>
                 </ul>
             </div>
 
@@ -1216,6 +1480,7 @@
         </div>
     </footer>
 
+    <!-- INTERACTIVE SPA RUNTIME CONTROLLERS -->
     <script>
         // Centralized Page Swapping Core Engine
         function switchView(viewId, showHeaderBanner) {
