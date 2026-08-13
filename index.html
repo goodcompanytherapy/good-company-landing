@@ -135,14 +135,15 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            min-height: 80px;
+            min-height: 90px;
             padding-top: 0.75rem;
             padding-bottom: 0.75rem;
             position: relative;
         }
 
+        /* ENLARGED LOGO (DESKTOP / BASE) */
         .nav-logo img {
-            height: clamp(50px, 8vw, 70px);
+            height: clamp(65px, 10vw, 95px);
             width: auto;
             object-fit: contain;
         }
@@ -176,7 +177,7 @@
             font-weight: 700;
         }
 
-        /* Hamburger Toggle Button (Hidden on Desktop) */
+        /* Hamburger Toggle Button */
         .hamburger-btn {
             display: none;
             background: none;
@@ -192,7 +193,7 @@
             z-index: 1002;
         }
 
-        /* Dropdown Structure Layout */
+        /* Desktop Dropdown Structure Layout */
         .dropdown {
             position: relative;
         }
@@ -223,7 +224,7 @@
             display: flex;
             align-items: center;
             min-height: 44px;
-            color: var(--text-dark);
+            color: var(--primary);
             text-decoration: none;
             font-size: 0.85rem;
             letter-spacing: 0.5px;
@@ -703,7 +704,7 @@
             background: transparent;
         }
 
-        /* Fixed Phone & Text Color to White on Footer */
+        /* Consistent White Footer Text & Phone Link */
         .footer-address p,
         .footer-address a {
             color: rgba(255, 255, 255, 0.9) !important;
@@ -752,7 +753,7 @@
         }
 
         /* ==========================================================================
-           RESPONSIVE MEDIA QUERIES (MOBILE SPECIFIC CHANGES)
+           RESPONSIVE MEDIA QUERIES (MOBILE SPECIFIC OVERRIDES)
            ========================================================================== */
         
         /* MOBILE DISPLAY ONLY (< 768px) */
@@ -765,7 +766,7 @@
                 padding-bottom: 0.5rem;
             }
 
-            /* Center Logo cleanly */
+            /* Center enlarged logo cleanly on mobile */
             .nav-logo {
                 grid-column: 2;
                 display: flex;
@@ -773,7 +774,7 @@
             }
 
             .nav-logo img {
-                height: 52px;
+                height: 68px; /* Bigger logo height on mobile */
             }
 
             /* Display Hamburger Icon on Right Side */
@@ -785,15 +786,15 @@
 
             /* Mobile Dropdown Overlay for Header Links */
             .nav-links {
-                display: none; /* Controlled by toggleMobileMenu JS */
+                display: none; 
                 position: absolute;
                 top: 100%;
                 left: 0;
                 width: 100%;
                 background-color: var(--bg-warm-2);
                 flex-direction: column;
-                gap: 0.75rem;
-                padding: 1.5rem var(--container-padding);
+                gap: 0.5rem;
+                padding: 1.25rem var(--container-padding);
                 box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
                 border-top: 1px solid rgba(1, 13, 121, 0.08);
                 z-index: 1000;
@@ -805,6 +806,7 @@
 
             .nav-links > li {
                 width: 100%;
+                flex-direction: column;
                 justify-content: center;
             }
 
@@ -814,20 +816,43 @@
                 justify-content: center;
             }
 
+            /* Mobile Nested Services Submenu Styles */
+            .dropdown {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .dropdown-menu {
+                position: static !important; /* Stack directly UNDER Services */
+                transform: none !important;
+                box-shadow: none !important;
+                border: none !important;
+                background-color: var(--bg-warm-2) !important; /* Matches main page bg */
+                margin-top: 0.25rem;
+                width: 100%;
+                text-align: center;
+                padding: 0.25rem 0;
+            }
+
+            .dropdown-menu a {
+                color: var(--primary) !important; /* Primary Blue Font */
+                font-size: 0.9rem;
+                justify-content: center;
+                background-color: transparent !important;
+                padding: 0.5rem 1rem;
+            }
+
+            .dropdown-menu a:hover {
+                font-weight: 700;
+                background-color: rgba(1, 13, 121, 0.03) !important;
+            }
+
             .btn-nav {
                 width: 100%;
                 padding: 0.7rem 1.5rem !important;
                 font-size: 0.85rem !important;
-            }
-
-            .dropdown-menu {
-                position: static;
-                transform: none;
-                box-shadow: none;
-                border: 1px solid rgba(1, 13, 121, 0.08);
-                margin-top: 0.25rem;
-                width: 100%;
-                text-align: center;
             }
 
             /* Footer Layout Centering */
@@ -881,7 +906,7 @@
                     <li><a href="#" onclick="handleNavClick('home-view', true)">HOME</a></li>
                     <li><a href="#" onclick="handleNavClick('about-view', false)">TEAM</a></li>
                     <li class="dropdown">
-                        <a href="#" onclick="handleNavClick('services-view', false)">SERVICES ▾</a>
+                        <a href="#" onclick="handleServicesClick(event)">SERVICES ▾</a>
                         <ul class="dropdown-menu">
                             <li><a href="#" onclick="handleNavClick('process-view', false)">Our Process</a></li>
                             <li><a href="#" onclick="handleNavClick('services-view', false)">What We Treat</a></li>
@@ -1216,7 +1241,7 @@
                     <p style="font-size: 0.95rem; margin-top: -1rem; font-style: italic;">We are located at 9200 Bathurst Street, Thornhill. You can find us on the first floor of the medical office.</p>
 
                     <h3>Contact Details</h3>
-                    <p>Phone: <a href="tel:9057070090" style="color: var(--text-dark);">905.707.0090</a><br>Email: hello@goodcompanytherapy.ca</p>
+                    <p>Phone: <a href="tel:9057070090">905.707.0090</a><br>Email: hello@goodcompanytherapy.ca</p>
 
                     <h3>Clinic Hours</h3>
                     <p>By Appointment Only<br>Monday – Friday: 9:00 AM – 7:00 PM<br>Sunday: 10:00 AM – 3:00 PM</p>
@@ -1377,7 +1402,7 @@
 
     <!-- INTERACTIVE SPA RUNTIME CONTROLLERS -->
     <script>
-        // Centralized Page Swapping Core Engine
+        // Centralized Page Swapping Engine
         function switchView(viewId, showHeaderBanner) {
             document.querySelectorAll('.page-view').forEach(view => {
                 view.classList.remove('active-view');
@@ -1398,13 +1423,23 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Toggle Mobile Navigation Overlay
+        // Toggle Mobile Hamburger Overlay
         function toggleMobileMenu() {
             const navMenu = document.getElementById('nav-menu');
             navMenu.classList.toggle('mobile-open');
         }
 
-        // Helper handler for mobile clicks to close menu automatically
+        // Handle Services tap on mobile vs desktop navigation
+        function handleServicesClick(e) {
+            if (window.innerWidth < 768) {
+                // On mobile screens, don't automatically navigate away, allow tapping child links
+                e.preventDefault();
+            } else {
+                handleNavClick('services-view', false);
+            }
+        }
+
+        // Helper handler for mobile navigation link clicks
         function handleNavClick(viewId, showHeaderBanner) {
             switchView(viewId, showHeaderBanner);
             const navMenu = document.getElementById('nav-menu');
@@ -1413,7 +1448,7 @@
             }
         }
 
-        // Accordion Controls
+        // Shared Accordion Controller
         document.querySelectorAll('.accordion-header').forEach(header => {
             header.addEventListener('click', () => {
                 const item = header.parentElement;
