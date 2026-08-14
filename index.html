@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Good Company Speech & Language</title>
+    
+    <!-- FAVICON -->
+    <link rel="icon" type="image/png" href="favicon.png">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -107,10 +111,10 @@
         .btn-nav {
             background-color: var(--btn-deep) !important;
             border-color: var(--btn-deep) !important;
-            padding: 0.6rem 1.8rem !important;
-            min-height: 44px;
+            padding: 0.55rem 1.6rem !important;
+            min-height: 38px;
             font-size: 0.85rem !important;
-            letter-spacing: 1px;
+            letter-spacing: 0.8px;
             color: #ffffff !important; 
             font-weight: 500 !important;
             border-radius: 50px !important;
@@ -131,27 +135,40 @@
             box-shadow: 0 2px 20px rgba(0,0,0,0.02);
         }
 
+        /* STANDARD-SMALL HEADER HEIGHT (78PX) */
         .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            min-height: 90px;
-            padding-top: 0.75rem;
-            padding-bottom: 0.75rem;
+            height: 78px;
+            min-height: 78px;
+            padding-top: 0.25rem;
+            padding-bottom: 0.25rem;
             position: relative;
         }
 
-        /* ENLARGED LOGO (DESKTOP / BASE) */
+        /* LOGO ON LEFT (DESKTOP) */
+        .nav-logo {
+            order: 1;
+            display: flex;
+            align-items: center;
+        }
+
         .nav-logo img {
-            height: clamp(65px, 10vw, 95px);
+            height: 78px; /* Increased logo height to 78px */
             width: auto;
             object-fit: contain;
+        }
+
+        /* NAV LINKS & BUTTONS ON RIGHT (DESKTOP) */
+        nav {
+            order: 2;
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: clamp(1rem, 2vw, 2.5rem);
+            gap: clamp(0.85rem, 2vw, 2rem);
             align-items: center;
         }
 
@@ -165,7 +182,7 @@
             color: var(--primary);
             font-weight: 500;
             font-size: 0.85rem;
-            letter-spacing: 1px;
+            letter-spacing: 0.8px;
             transition: var(--transition);
             display: inline-flex;
             align-items: center;
@@ -182,10 +199,10 @@
             display: none;
             background: none;
             border: none;
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             color: var(--primary);
             cursor: pointer;
-            padding: 0.5rem;
+            padding: 0.25rem;
             min-height: 44px;
             min-width: 44px;
             align-items: center;
@@ -209,8 +226,8 @@
             padding: 0.5rem 0;
             list-style: none;
             display: none;
-            min-width: 180px;
-            border-top: 8px solid transparent;
+            min-width: 170px;
+            border-top: 6px solid transparent;
             z-index: 1001;
         }
 
@@ -220,10 +237,10 @@
         }
 
         .dropdown-menu a {
-            padding: 0.75rem 1.2rem;
+            padding: 0.65rem 1.1rem;
             display: flex;
             align-items: center;
-            min-height: 44px;
+            min-height: 40px;
             color: var(--primary);
             text-decoration: none;
             font-size: 0.85rem;
@@ -379,7 +396,8 @@
             align-items: center;
             justify-content: center;
             color: var(--text-muted);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+            font-weight: 500;
             border: 1px dashed rgba(1, 13, 121, 0.1);
         }
 
@@ -515,7 +533,7 @@
         }
 
         .team-bio {
-            text-align: left;
+            text-align: center;
             margin-bottom: 0;
             line-height: 1.6;
         }
@@ -579,6 +597,7 @@
             justify-content: center;
             color: var(--text-muted);
             font-size: 0.95rem;
+            font-weight: 500;
             border: 1px dashed rgba(1, 13, 121, 0.1);
         }
 
@@ -704,7 +723,6 @@
             background: transparent;
         }
 
-        /* Consistent White Footer Text & Phone Link */
         .footer-address p,
         .footer-address a {
             color: rgba(255, 255, 255, 0.9) !important;
@@ -759,32 +777,34 @@
         /* MOBILE DISPLAY ONLY (< 768px) */
         @media (max-width: 767.98px) {
             .nav-container {
-                display: grid;
-                grid-template-columns: 1fr auto 1fr;
+                display: flex;
+                justify-content: space-between;
                 align-items: center;
-                padding-top: 0.5rem;
-                padding-bottom: 0.5rem;
+                padding-top: 0.25rem;
+                padding-bottom: 0.25rem;
+                height: 78px;
+                min-height: 78px;
             }
 
-            /* Center enlarged logo cleanly on mobile */
             .nav-logo {
-                grid-column: 2;
-                display: flex;
-                justify-content: center;
+                order: 1;
             }
 
             .nav-logo img {
-                height: 68px; /* Bigger logo height on mobile */
+                height: 52px;
+                width: auto;
             }
 
-            /* Display Hamburger Icon on Right Side */
             .hamburger-btn {
                 display: flex;
-                grid-column: 3;
-                justify-self: end;
+                order: 2;
             }
 
-            /* Mobile Dropdown Overlay for Header Links */
+            nav {
+                order: 3;
+                width: 100%;
+            }
+
             .nav-links {
                 display: none; 
                 position: absolute;
@@ -816,7 +836,6 @@
                 justify-content: center;
             }
 
-            /* Mobile Nested Services Submenu Styles */
             .dropdown {
                 width: 100%;
                 display: flex;
@@ -825,11 +844,11 @@
             }
 
             .dropdown-menu {
-                position: static !important; /* Stack directly UNDER Services */
+                position: static !important;
                 transform: none !important;
                 box-shadow: none !important;
                 border: none !important;
-                background-color: var(--bg-warm-2) !important; /* Matches main page bg */
+                background-color: var(--bg-warm-2) !important;
                 margin-top: 0.25rem;
                 width: 100%;
                 text-align: center;
@@ -837,7 +856,7 @@
             }
 
             .dropdown-menu a {
-                color: var(--primary) !important; /* Primary Blue Font */
+                color: var(--primary) !important;
                 font-size: 0.9rem;
                 justify-content: center;
                 background-color: transparent !important;
@@ -851,11 +870,10 @@
 
             .btn-nav {
                 width: 100%;
-                padding: 0.7rem 1.5rem !important;
+                padding: 0.6rem 1.5rem !important;
                 font-size: 0.85rem !important;
             }
 
-            /* Footer Layout Centering */
             .footer-grid {
                 text-align: center;
             }
@@ -904,7 +922,7 @@
             <nav>
                 <ul class="nav-links" id="nav-menu">
                     <li><a href="#" onclick="handleNavClick('home-view', true)">HOME</a></li>
-                    <li><a href="#" onclick="handleNavClick('about-view', false)">TEAM</a></li>
+                    <li><a href="#" onclick="handleNavClick('about-view', false)">OUR TEAM</a></li>
                     <li class="dropdown">
                         <a href="#" onclick="handleServicesClick(event)">SERVICES ▾</a>
                         <ul class="dropdown-menu">
@@ -947,12 +965,12 @@
 
             <div class="delivery-models">
                 <div class="model-card">
-                    <div class="model-img-placeholder">[ In Clinic Image Space ]</div>
+                    <div class="model-img-placeholder">In Clinic Coming Soon</div>
                     <h3>In Clinic</h3>
                     <p>In-person therapy services at our cozy Thornhill clinic. Come see our home base. By appointment only.</p>
                 </div>
                 <div class="model-card">
-                    <div class="model-img-placeholder">[ Virtual Therapy Image Space ]</div>
+                    <div class="model-img-placeholder">Virtual Therapy Coming Soon</div>
                     <h3>Virtual Therapy</h3>
                     <p>Secure virtual therapy sessions are available, offering flexible and effective support from the comfort of your home.</p>
                 </div>
@@ -1195,7 +1213,7 @@
                 
                 <div class="team-card" style="border: 1px dashed rgba(1, 13, 121, 0.15); background: transparent; box-shadow: none; display: flex; flex-direction: column; justify-content: center; align-items: center;">
                     <div class="team-profile-img" style="background-color: rgba(1, 13, 121, 0.02); border: 1px dashed rgba(1, 13, 121, 0.2); display: flex; align-items: center; justify-content: center; color: var(--text-muted);">
-                        <span>Photo</span>
+                        <span>Photo Coming Soon</span>
                     </div>
                     <h3 style="color: var(--text-muted); opacity: 0.7;">Team Member Coming Soon</h3>
                     <p class="team-role" style="margin-bottom: 0;">Speech-Language Pathology Collective</p>
@@ -1207,7 +1225,8 @@
     <!-- CONTACT & LOCATION VIEW MODULE -->
     <div id="contact-view" class="page-view">
         <div class="container">
-            <div class="section-header" style="text-align: left; margin-left: 0;">
+            <!-- CENTERED TITLE SECTION -->
+            <div class="section-header">
                 <h2>Contact & Location</h2>
                 <p style="font-size: 1.2rem;">We're excited to hear from you.</p>
             </div>
@@ -1234,7 +1253,7 @@
                 </form>
 
                 <div class="contact-info-panel">
-                    <div class="contact-welcoming-frame">[ Clinic Environment Photo Space ]</div>
+                    <div class="contact-welcoming-frame">Clinic Photo Coming Soon</div>
 
                     <h3>Our Address</h3>
                     <p>Unit 25a - 9200 Bathurst Street, Thornhill, ON.</p>
@@ -1378,7 +1397,7 @@
                 <h4>Explore</h4>
                 <ul>
                     <li><a href="#" onclick="switchView('home-view', true)">Home</a></li>
-                    <li><a href="#" onclick="switchView('about-view', false)">Team</a></li>
+                    <li><a href="#" onclick="switchView('about-view', false)">Our Team</a></li>
                     <li><a href="#" onclick="switchView('process-view', false)">Our Process</a></li>
                     <li><a href="#" onclick="switchView('services-view', false)">What We Treat</a></li>
                     <li><a href="#" onclick="switchView('pricing-view', false)">Pricing</a></li>
@@ -1432,7 +1451,6 @@
         // Handle Services tap on mobile vs desktop navigation
         function handleServicesClick(e) {
             if (window.innerWidth < 768) {
-                // On mobile screens, don't automatically navigate away, allow tapping child links
                 e.preventDefault();
             } else {
                 handleNavClick('services-view', false);
