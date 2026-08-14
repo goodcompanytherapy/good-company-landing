@@ -155,7 +155,7 @@
         }
 
         .nav-logo img {
-            height: 90px; /* Bigger Desktop Logo */
+            height: 78px;
             width: auto;
             object-fit: contain;
         }
@@ -538,7 +538,7 @@
             line-height: 1.6;
         }
 
-        /* --- CONTACT LAYOUT & FORM --- */
+        /* --- CONTACT LAYOUT & FORM STYLING --- */
         .contact-layout {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -551,6 +551,12 @@
             padding: clamp(1.5rem, 4vw, 3rem);
             border-radius: 20px;
             box-shadow: 0 4px 30px rgba(0,0,0,0.01);
+        }
+
+        .form-row-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
         }
 
         .form-group {
@@ -566,6 +572,7 @@
         }
 
         .form-group input, 
+        .form-group select,
         .form-group textarea {
             width: 100%;
             padding: 0.85rem 1rem;
@@ -574,8 +581,41 @@
             border: 1px solid rgba(1, 13, 121, 0.1);
             background-color: var(--bg-warm-2);
             font-family: var(--font-sans);
-            font-size: 1rem;
+            font-size: 0.98rem;
             color: var(--text-dark);
+            transition: var(--transition);
+        }
+
+        .form-group input:focus, 
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            background-color: var(--white);
+            box-shadow: 0 0 0 3px rgba(1, 13, 121, 0.05);
+        }
+
+        /* Custom Success Confirmation State Box */
+        .form-success-box {
+            display: none;
+            background: var(--white);
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid rgba(1, 13, 121, 0.05);
+            box-shadow: 0 4px 30px rgba(0,0,0,0.01);
+        }
+
+        .form-success-box h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .form-success-box p {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            margin-bottom: 0;
         }
 
         .contact-info-panel h3 {
@@ -786,6 +826,11 @@
                 min-height: 78px;
             }
 
+            .form-row-2 {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
             /* LOGO CENTERED ON MOBILE & TABLET */
             .nav-logo {
                 grid-column: 2;
@@ -795,7 +840,7 @@
             }
 
             .nav-logo img {
-                height: 64px; /* Larger logo on mobile/tablet */
+                height: 64px;
                 width: auto;
             }
 
@@ -1241,25 +1286,51 @@
             </div>
 
             <div class="contact-layout">
-                <form class="contact-form" onsubmit="event.preventDefault(); alert('Clinical intake form submitted securely.');">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" required placeholder="Your full name">
+                <!-- INVISIBLE IFRAME FOR BACKGROUND FORM SUBMISSION -->
+                <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(window.submitted) { handleFormSuccess(); }"></iframe>
+
+                <!-- NATIVE HTML FORM CONNECTED TO YOUR GOOGLE FORM ENDPOINT -->
+                <form class="contact-form" id="contact-form" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSeEpEVONav3aueHnrbPaSwbuHz7PN2vdgDTFICEAcQZ5JuEyQ/formResponse" method="POST" target="hidden_iframe" onsubmit="window.submitted = true;">
+                    
+                    <div class="form-row-2">
+                        <div class="form-group">
+                            <label for="first-name">First Name *</label>
+                            <input type="text" id="first-name" name="entry.1165133173" required placeholder="First name">
+                        </div>
+                        <div class="form-group">
+                            <label for="last-name">Last Name *</label>
+                            <input type="text" id="last-name" name="entry.239318004" required placeholder="Last name">
+                        </div>
                     </div>
+
                     <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" required placeholder="name@example.com">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="entry.1887746185" required placeholder="name@example.com">
                     </div>
+
                     <div class="form-group">
-                        <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" required placeholder="(123) 456-7890">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="entry.1852448380" required placeholder="(123) 456-7890">
                     </div>
+
                     <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" rows="5" required placeholder="How can our clinical team help support your family's needs?"></textarea>
+                        <label for="referral">How did you hear about us?</label>
+                        <input type="text" id="referral" name="entry.1723586428" placeholder="e.g., Doctor, Friend, Google, Instagram">
                     </div>
+
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="entry.55294827" rows="5" required placeholder="How can our clinical team help support your family's needs?"></textarea>
+                    </div>
+
                     <button type="submit" class="btn">Send Message</button>
                 </form>
+
+                <!-- SUCCESS CONFIRMATION BOX -->
+                <div class="form-success-box" id="form-success-message">
+                    <h3>Thank you! We're on it.</h3>
+                    <p>Our team will connect with you shortly.</p>
+                </div>
 
                 <div class="contact-info-panel">
                     <div class="contact-welcoming-frame">Clinic Photo Coming Soon</div>
@@ -1430,6 +1501,16 @@
 
     <!-- INTERACTIVE SPA RUNTIME CONTROLLERS -->
     <script>
+        // Track Form Submission Status
+        window.submitted = false;
+
+        function handleFormSuccess() {
+            var form = document.getElementById('contact-form');
+            var successBox = document.getElementById('form-success-message');
+            if (form) form.style.display = 'none';
+            if (successBox) successBox.style.display = 'block';
+        }
+
         // Centralized Page Swapping Engine
         function switchView(viewId, showHeaderBanner) {
             document.querySelectorAll('.page-view').forEach(view => {
