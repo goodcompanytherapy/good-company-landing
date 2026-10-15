@@ -1290,8 +1290,11 @@
                 <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(window.submitted) { handleFormSuccess(); }"></iframe>
 
                 <!-- NATIVE HTML FORM CONNECTED TO YOUR GOOGLE FORM ENDPOINT -->
-                <form class="contact-form" id="contact-form" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSeEpEVONav3aueHnrbPaSwbuHz7PN2vdgDTFICEAcQZ5JuEyQ/formResponse" method="POST" target="hidden_iframe" onsubmit="window.submitted = true;">
+                <form class="contact-form" id="contact-form" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSeEpEVONav3aueHnrbPaSwbuHz7PN2vdgDTFICEAcQZ5JuEyQ/formResponse" method="POST" target="hidden_iframe">
                     
+                    <!-- HIDDEN HONEYPOT FIELD FOR BOT SPAM FILTERING -->
+                    <input type="text" name="website_hp" id="website_hp" style="display:none !important;" tabindex="-1" autocomplete="off" aria-hidden="true">
+
                     <div class="form-row-2">
                         <div class="form-group">
                             <label for="first-name">First Name *</label>
@@ -1509,6 +1512,24 @@
             var successBox = document.getElementById('form-success-message');
             if (form) form.style.display = 'none';
             if (successBox) successBox.style.display = 'block';
+        }
+
+        // Honeypot & Submission Validation Listener
+        var contactForm = document.getElementById('contact-form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                var honeypot = document.getElementById('website_hp');
+                
+                // If a spam bot filled out the hidden honeypot field
+                if (honeypot && honeypot.value.trim() !== "") {
+                    e.preventDefault(); // Abort actual network submit request
+                    handleFormSuccess(); // Show fake success box so the bot thinks it succeeded
+                    return false;
+                }
+                
+                // If legitimate human, allow post to Google Form
+                window.submitted = true;
+            });
         }
 
         // Centralized Page Swapping Engine
